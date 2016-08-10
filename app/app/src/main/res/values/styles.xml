@@ -1,11 +1,24 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- Tema base. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <!-- Cor primaria do aplicativo. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- Versão escura da cor primaria para a status bar e contextual app bars -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- Cor de acentuação para as views (Checkbox, TextView, etc) -->
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <!-- Remove a ActionBar -->
+        <item name="windowActionBar">false</item>
+        <!-- Mantém o título com a Toolbar -->
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Temas para a Toolbar, ver include_toolbar.xml -->
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
