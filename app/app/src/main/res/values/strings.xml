@@ -9,5 +9,6 @@
     <string name="agurade">Aguarde...</string>
     <!-- Itens de menu -->
     <string name="settings">Configurações</string>
+    <string name="ranking">Ranking</string>
 
 </resources>

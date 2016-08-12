@@ -51,6 +51,9 @@ public class MainActivity extends BaseActivity {
 
         switch (item.getItemId()) {
 
+            case R.id.action_ranking:
+                toast("Mostra o ranking");
+                break;
             case R.id.action_settings:
                 toast("Abre configurações");
                 break;
