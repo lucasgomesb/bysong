@@ -2,9 +2,9 @@
 
     <string name="app_name">BySong</string>
     <!-- Tabs Songs -->
-    <string name="top_10">Top 10</string>
+    <string name="top_100">Top 100</string>
     <string name="novas_musicas">Novas Músicas</string>
-    <string name="por_genero">Por Gênero</string>
+    <string name="pra_voce">Pra Você</string>
     <!-- Mensagem Splash Screen -->
     <string name="agurade">Aguarde...</string>
     <!-- Itens de menu -->

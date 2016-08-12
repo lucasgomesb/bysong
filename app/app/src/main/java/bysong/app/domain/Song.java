@@ -40,17 +40,17 @@ public class Song {
     public static List<Song> getSongs() {
 
         List<Song> songs = new ArrayList<Song>();
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele"));
+        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
+        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
+        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
+        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
+        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
+        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
+        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
+        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
+        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
+        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
+        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
         return songs;
 
     }

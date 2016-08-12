@@ -14,6 +14,7 @@
     card_view:cardElevation="6dp"
     android:foreground="?attr/selectableItemBackground">
 
+        <!-- Layout 1 -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,49 +28,92 @@
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="5dp"/>
 
-            <TextView
-                android:id="@+id/name_song_artist"
+            <!-- Layout 2 -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello-Adele"
+                android:orientation="vertical"
                 android:layout_gravity="center_vertical"
-                android:paddingLeft="10dp"/>
+                android:layout_marginLeft="5dp">
+
+                <!-- Layout 2.1 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/img_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/song_item_status_rank_up"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/name_song_artist"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Adele - Hello"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center_vertical" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5.000 visualizações."
+                    android:layout_gravity="center_vertical"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
 
         </LinearLayout>
-
+        <!-- Layout 3 -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|right"
             android:paddingRight="5dp">
 
-            <ImageView
-                android:id="@+id/song_item_start_1"
-                android:layout_width="49dp"
-                android:layout_height="49dp"
-                android:src="@drawable/song_item_start_off"
-                android:layout_gravity="center_vertical|right"/>
+            <!-- Layout 3.1 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="15dp">
 
-            <ImageView
-                android:id="@+id/song_item_start_2"
-                android:layout_width="49dp"
-                android:layout_height="49dp"
-                android:src="@drawable/song_item_start_off"
-                android:layout_gravity="center_vertical|right"/>
+                <ImageView
+                    android:id="@+id/song_item_start_1"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/song_item_start_on"
+                    android:layout_gravity="center_vertical|right"/>
 
-            <ImageView
-                android:id="@+id/song_item_start_3"
-                android:layout_width="49dp"
-                android:layout_height="49dp"
-                android:src="@drawable/song_item_start_off"
-                android:layout_gravity="center_vertical|right" />
+                <ImageView
+                    android:id="@+id/song_item_start_2"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/song_item_start_on"
+                    android:layout_gravity="center_vertical|right"/>
+
+                <ImageView
+                    android:id="@+id/song_item_start_3"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/song_item_start_on"
+                    android:layout_gravity="center_vertical|right" />
+
+
+            </LinearLayout>
+
 
             <ImageView
                 android:id="@+id/song_item_audio"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/song_item_audio"
-                android:layout_gravity="center_vertical|right" />
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="5dp"/>
 
 
         </LinearLayout>

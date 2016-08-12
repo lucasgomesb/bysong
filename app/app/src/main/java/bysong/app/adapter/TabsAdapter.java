@@ -7,8 +7,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import bysong.app.R;
 import bysong.app.fragments.NovasMusicasFragment;
-import bysong.app.fragments.PorGeneroFragment;
-import bysong.app.fragments.Top10Fragment;
+import bysong.app.fragments.PraVoceFragment;
+import bysong.app.fragments.Top100Fragment;
 
 /**
  * Created by Tiago on 10/08/2016.
@@ -38,7 +38,7 @@ public class TabsAdapter extends FragmentPagerAdapter {
 
         if (position == 0) {
 
-            return context.getString(R.string.top_10);
+            return context.getString(R.string.top_100);
 
         } else if (position == 1) {
 
@@ -46,7 +46,7 @@ public class TabsAdapter extends FragmentPagerAdapter {
 
         }
 
-        return context.getString(R.string.por_genero);
+        return context.getString(R.string.pra_voce);
 
     }
 
@@ -57,11 +57,11 @@ public class TabsAdapter extends FragmentPagerAdapter {
 
         if (position == 0) {
 
-            f = new Top10Fragment();
+            f = new Top100Fragment();
 
         } else if (position == 1) {
 
-            f = new PorGeneroFragment();
+            f = new PraVoceFragment();
 
         } else {
 

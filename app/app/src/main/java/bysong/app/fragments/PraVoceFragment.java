@@ -19,7 +19,7 @@ import bysong.app.domain.Song;
 /**
  * Created by Tiago on 10/08/2016.
  */
-public class Top10Fragment extends Fragment {
+public class PraVoceFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private List<Song> songs;
@@ -29,9 +29,9 @@ public class Top10Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_top_10, container, false);
+        View view = inflater.inflate(R.layout.fragment_por_genero, container, false);
         songs = Song.getSongs();
-        recyclerView = (RecyclerView) view.findViewById(R.id.top10);
+        recyclerView = (RecyclerView) view.findViewById(R.id.porGenero);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(new SongsAdapter(getContext(), songs));
