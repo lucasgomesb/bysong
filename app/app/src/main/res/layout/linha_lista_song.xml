@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardElevation="3dp"
+    app:cardCornerRadius="25dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="false"
+    card_view:cardCornerRadius="3dp"
+    card_view:cardElevation="6dp"
+    android:foreground="?attr/selectableItemBackground">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/img_artist"
+                android:layout_width="@dimen/image_view_width"
+                android:layout_height="@dimen/image_view_height"
+                android:src="@drawable/artist_circle_adele"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="5dp"/>
+
+            <TextView
+                android:id="@+id/name_song_artist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello-Adele"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:paddingRight="5dp">
+
+            <ImageView
+                android:id="@+id/song_item_start_1"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:src="@drawable/song_item_start_off"
+                android:layout_gravity="center_vertical|right"/>
+
+            <ImageView
+                android:id="@+id/song_item_start_2"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:src="@drawable/song_item_start_off"
+                android:layout_gravity="center_vertical|right"/>
+
+            <ImageView
+                android:id="@+id/song_item_start_3"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:src="@drawable/song_item_start_off"
+                android:layout_gravity="center_vertical|right" />
+
+            <ImageView
+                android:id="@+id/song_item_audio"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                android:src="@drawable/song_item_audio"
+                android:layout_gravity="center_vertical|right" />
+
+
+        </LinearLayout>
+
+</android.support.v7.widget.CardView>
