@@ -19,7 +19,7 @@ import bysong.app.domain.Song;
 /**
  * Created by Tiago on 10/08/2016.
  */
-public class FragmentNovasMusicas extends Fragment {
+public class NovasMusicasFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private List<Song> songs;

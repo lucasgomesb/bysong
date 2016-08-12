@@ -5,4 +5,9 @@
     <string name="top_10">Top 10</string>
     <string name="novas_musicas">Novas Músicas</string>
     <string name="por_genero">Por Gênero</string>
+    <!-- Mensagem Splash Screen -->
+    <string name="agurade">Aguarde...</string>
+    <!-- Itens de menu -->
+    <string name="settings">Configurações</string>
+
 </resources>

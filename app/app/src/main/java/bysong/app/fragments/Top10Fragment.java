@@ -19,7 +19,7 @@ import bysong.app.domain.Song;
 /**
  * Created by Tiago on 10/08/2016.
  */
-public class FragmentTop10 extends Fragment {
+public class Top10Fragment extends Fragment {
 
     private RecyclerView recyclerView;
     private List<Song> songs;

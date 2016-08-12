@@ -1,7 +1,11 @@
 package bysong.app.activity;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import bysong.app.R;
 
@@ -13,7 +17,7 @@ import bysong.app.R;
 public class BaseActivity extends AppCompatActivity {
 
     // Configura a toolbar
-    public void setUpToolbar() {
+    protected void setUpToolbar() {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -24,6 +28,18 @@ public class BaseActivity extends AppCompatActivity {
         }
 
     }
+    // Abre o fragment
+    protected void replaceFragment(FragmentManager fm, int layout, Fragment frag) {
 
+        FragmentTransaction ft = fm.beginTransaction().replace(layout, frag);
+        ft.commit();
+
+    }
+    // Toast
+    protected void toast(String msg) {
+
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+
+    }
 
 }
