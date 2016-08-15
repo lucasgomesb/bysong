@@ -5,33 +5,38 @@ package bysong.app.domain;
  */
 public class Artist {
 
-    private String isArtistName;
-    private String isImageFileName;
+    private String artistName;
+    private int imageFileArtist;
 
-    public Artist(String asArtistName, String asImageFileName)
-    {
-        isArtistName = asArtistName;
-        isImageFileName = asImageFileName;
+    public Artist(String artistName, int imageFileArtist) {
+
+        this.artistName = artistName;
+        this.imageFileArtist = imageFileArtist;
+
     }
 
-    public void setArtistName(String asArtistName)
-    {
-        isArtistName = asArtistName;
+    public void setArtistName(String artistName) {
+
+        this.artistName = artistName;
+
     }
 
-    public String getArtistName()
-    {
-        return isArtistName;
+    public String getArtistName() {
+
+        return artistName;
+
     }
 
-    public void setImageFileName(String asImageFileName)
-    {
-        isImageFileName = asImageFileName;
+    public void setImageFileArtist(int imageFileArtist) {
+
+        this.imageFileArtist = this.imageFileArtist;
+
     }
 
-    public String getImageFileName()
-    {
-        return isImageFileName;
+    public int getImageFileArtist() {
+
+        return imageFileArtist;
+
     }
 
 }

@@ -5,8 +5,8 @@ package bysong.app.domain;
  */
 public class Language {
 
-    public static Language English;
-    public static Language Portuguese;
+    public static Language english;
+    public static Language portuguese;
 
 }
 

@@ -1,5 +1,6 @@
 package bysong.app.activity;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
@@ -9,8 +10,13 @@ import android.view.MenuItem;
 
 import bysong.app.R;
 import bysong.app.adapter.TabsAdapter;
+import bysong.app.utils.PermissionUtils;
 
 public class MainActivity extends BaseActivity {
+
+    private String [] permissions = new String[]{
+            Manifest.permission.READ_EXTERNAL_STORAGE
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +24,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setUpToolbar();
+        PermissionUtils.validate(this, 1, permissions);
         setUpViewPagerTabs();
 
     }

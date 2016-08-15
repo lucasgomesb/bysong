@@ -26,14 +26,16 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsViewHol
     // Interface necessária para o Callback
     public interface OnClickSongs {
 
-        void onClickSongs(SongsViewHolder holder, int id);
+        void onClickPlay(SongsViewHolder holder, int id);
+        void onClickPause(SongsViewHolder holder, int id);
 
     }
 
-    public SongsAdapter(Context context, List<Song> songs) {
+    public SongsAdapter(Context context, List<Song> songs, OnClickSongs onClickSongs) {
 
         this.context = context;
         this.songs = songs;
+        this.onClickSongs = onClickSongs;
 
     }
 
@@ -48,15 +50,39 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsViewHol
     }
 
     @Override
-    public void onBindViewHolder(SongsViewHolder holder, int position) {
+    public void onBindViewHolder(final SongsViewHolder holder, final int position) {
 
         Song song = songs.get(position);
-        holder.img_artist.setImageResource(R.drawable.artist_circle_adele);
-        holder.name_song_artist.setText(song.Artist.getArtistName());
-        holder.song_item_star_1.setImageResource(R.drawable.song_item_start_on);
-        holder.song_item_star_2.setImageResource(R.drawable.song_item_start_on);
-        holder.song_item_star_3.setImageResource(R.drawable.song_item_start_off);
-        holder.song_item_audio.setImageResource(R.drawable.song_item_audio);
+        holder.img_artist.setImageResource(song.getArtist().getImageFileArtist());
+        holder.img_status.setImageResource(song.getIoSongRankStatus());
+        holder.name_song_artist.setText(song.getArtist().getArtistName() + " - " + song.getTitle());
+        holder.visualizacoes.setText(String.valueOf(song.getAllViewsCount()) + " visualicações");
+
+        if (onClickSongs != null) {
+
+            holder.song_item_audio.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+                    onClickSongs.onClickPlay(holder, position);
+
+                }
+
+            });
+
+            holder.song_item_audio_pause.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+                    onClickSongs.onClickPause(holder, position);
+
+                }
+
+            });
+
+        }
 
     }
 
@@ -69,18 +95,18 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsViewHol
 
     public static class SongsViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView img_artist, song_item_star_1, song_item_star_2, song_item_star_3, song_item_audio;
-        private TextView name_song_artist;
+        public ImageView img_artist, song_item_audio, song_item_audio_pause, img_status;
+        private TextView name_song_artist, visualizacoes;
 
         public SongsViewHolder(View itemView) {
 
             super(itemView);
             img_artist = (ImageView) itemView.findViewById(R.id.img_artist);
             name_song_artist = (TextView) itemView.findViewById(R.id.name_song_artist);
-            song_item_star_1 = (ImageView) itemView.findViewById(R.id.song_item_start_1);
-            song_item_star_2 = (ImageView) itemView.findViewById(R.id.song_item_start_2);
-            song_item_star_3 = (ImageView) itemView.findViewById(R.id.song_item_start_3);
+            img_status = (ImageView) itemView.findViewById(R.id.img_status);
+            visualizacoes = (TextView) itemView.findViewById(R.id.visualizacoes);
             song_item_audio = (ImageView) itemView.findViewById(R.id.song_item_audio);
+            song_item_audio_pause = (ImageView) itemView.findViewById(R.id.song_item_audio_pause);
 
         }
 

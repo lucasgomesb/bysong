@@ -11,66 +11,103 @@ import bysong.app.R;
  */
 public class Song {
 
-    private String isSongCode;
-    public String FileNameMp3;
-    public Artist Artist;
-    private String isTitle;
-    private int iiViewsCount;
-    public List<Verse> VersesList;
-    private SongRankStatus ioSongRankStatus;
+    private String songCode;
+    private String fileNameMp3;
+    private String title;
+    private int allViewsCount;
+    public List<Verse> versesList;
+    private Artist artist;
+    private int ioSongRankStatus; // Atributo ioSongRankStatus alterado de SongRankStatus para int
 
+    /* Obs.: Sempre que um construtor for utilizado para inicializar os atributos é preciso criar
+     * um outro construtor vazio, pois nem sempre vamos inicializar os atributos ao instanciar o mesmo. */
+    public Song() {}
 
-    public Song(String asSongCode, String asFileNameMp3, Artist aoArtist, String asTitle, int aiViewsCount, SongRankStatus aoSongRankStatus)
-    {
+    public Song(String songCode, String fileNameMp3, String title, int allViewsCount,
+                List<Verse> versesList, Artist artist, int ioSongRankStatus) {
 
-        isSongCode = asSongCode;
-        FileNameMp3 = asFileNameMp3;
-        Artist = aoArtist;
-        isTitle = asTitle;
-        iiViewsCount = aiViewsCount;
-        ioSongRankStatus = aoSongRankStatus;
-
-        VersesList =  new ArrayList<Verse>();
-    }
-/*
-    public Song(int imgArtist, String nameArtist){
-
-        this.Ar = imgArtist;
-        this.nameArtist = nameArtist;
+        this.songCode = songCode;
+        this.fileNameMp3 = fileNameMp3;
+        this.title = title;
+        this.allViewsCount = allViewsCount;
+        this.versesList = versesList;
+        this.artist = artist;
+        this.ioSongRankStatus = ioSongRankStatus;
 
     }
-    public int getImgArtist() {
-        return imgArtist;
+
+    public String getSongCode() {
+        return songCode;
     }
 
-    public void setImgArtist(int imgArtist) {
-        this.imgArtist = imgArtist;
+    public void setSongCode(String songCode) {
+        this.songCode = songCode;
     }
 
-    public String getNameArtist() {
-        return nameArtist;
+    public String getFileNameMp3() {
+        return fileNameMp3;
     }
 
-    public void setNameArtist(String nameArtist) {
-        this.nameArtist = nameArtist;
+    public void setFileNameMp3(String fileNameMp3) {
+        this.fileNameMp3 = fileNameMp3;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getAllViewsCount() {
+        return allViewsCount;
+    }
+
+    public void setAllViewsCount(int allViewsCount) {
+        this.allViewsCount = allViewsCount;
+    }
+
+    public List<Verse> getVersesList() {
+        return versesList;
+    }
+
+    public void setVersesList(List<Verse> versesList) {
+        this.versesList = versesList;
+    }
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+
+    public int getIoSongRankStatus() {
+        return ioSongRankStatus;
+    }
+
+    public void setIoSongRankStatus(int ioSongRankStatus) {
+        this.ioSongRankStatus = ioSongRankStatus;
+    }
+
+    // Método para teste
     public static List<Song> getSongs() {
 
         List<Song> songs = new ArrayList<Song>();
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
-        songs.add(new Song(R.drawable.artist_circle_adele, "Adele - Hello"));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.artist_circle_adele), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.artist_circle_adele), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.artist_circle_adele), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.artist_circle_adele), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.artist_circle_adele), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.artist_circle_adele), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.artist_circle_adele), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.artist_circle_adele), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.artist_circle_adele), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.artist_circle_adele), 0));
         return songs;
 
     }
-*/
+
 }

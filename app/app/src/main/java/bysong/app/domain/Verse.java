@@ -5,8 +5,8 @@ import java.util.List;
 /**
  * Created by Lucas on 14/08/2016.
  */
-public class Verse
-{
+public class Verse {
+
     private int iiVerseNumber;
     //        private string isEnglishText;
     //        private string isPortugueseText;
@@ -16,8 +16,7 @@ public class Verse
     public List<Verse> BasicTranslations;
 
 
-    public Verse(int aiVerseNumber, List<Word> aoWordsList, int aiStartTime, int aiEndTime)
-    {
+    public Verse(int aiVerseNumber, List<Word> aoWordsList, int aiStartTime, int aiEndTime) {
         iiVerseNumber = aiVerseNumber;
         WordsList = aoWordsList;
         //isPortugueseText = asPortugueseMode;
@@ -30,7 +29,7 @@ public class Verse
 
         String lsOriginalWriting = "";
         for (Word loWord : WordsList) {
-            lsOriginalWriting += loWord.Writing + " ";
+            lsOriginalWriting += loWord.writing + " ";
         }
         lsOriginalWriting = lsOriginalWriting.trim();
 
