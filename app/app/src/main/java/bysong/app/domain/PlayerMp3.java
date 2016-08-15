@@ -1,7 +1,10 @@
 package bysong.app.domain;
 
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.util.Log;
+
+import bysong.app.R;
 
 /**
  * Created by Tiago on 15/08/2016.
@@ -22,10 +25,10 @@ public class PlayerMp3 implements MediaPlayer.OnCompletionListener {
     // Caminho da música
     private String mp3;
 
-    public PlayerMp3() {
+    public PlayerMp3(Context context) {
 
         // Cria o MediaPlayer
-        player = new MediaPlayer();
+        player = MediaPlayer.create(context, R.raw.hello);
         // Executa o listener quando terminar a música
         player.setOnCompletionListener(this);
 
@@ -45,8 +48,8 @@ public class PlayerMp3 implements MediaPlayer.OnCompletionListener {
                     player.reset();
                     break;
                 case NOVO:
-                    player.setDataSource(mp3);
-                    player.prepare();
+                    //player.setDataSource(mp3);
+                    //player.prepare();
                     player.start();
                     break;
                 case PAUSADO:

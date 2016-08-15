@@ -44,7 +44,7 @@ public class Top100Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_top_10, container, false);
         songs = new SongLibrary().GetSongList();
         //songs = Song.getSongs();
-        playerMp3 = new PlayerMp3();
+        playerMp3 = new PlayerMp3(getContext());
         recyclerView = (RecyclerView) view.findViewById(R.id.top10);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -61,7 +61,7 @@ public class Top100Fragment extends Fragment {
             public void onClickPlay(SongsAdapter.SongsViewHolder holder, int id) {
 
                 Log.d(TAG, "Tocar música");
-                playerMp3.start("/storage/emulated/0/Music/Hello.mp3");
+                playerMp3.start("");
                 holder.song_item_audio.setVisibility(View.GONE);
                 holder.song_item_audio_pause.setVisibility(View.VISIBLE);
 

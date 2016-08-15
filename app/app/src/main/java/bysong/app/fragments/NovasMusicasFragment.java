@@ -42,7 +42,7 @@ public class NovasMusicasFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_novas_musicas, container, false);
         //songs = new SongLibrary().GetSongList();
         songs = Song.getSongs();
-        playerMp3 = new PlayerMp3();
+        playerMp3 = new PlayerMp3(getContext());
         recyclerView = (RecyclerView) view.findViewById(R.id.novasMusicas);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -58,7 +58,7 @@ public class NovasMusicasFragment extends Fragment {
             @Override
             public void onClickPlay(SongsAdapter.SongsViewHolder holder, int id) {
 
-                playerMp3.start("/storage/emulated/0/Music/Hello.mp3");
+                playerMp3.start("");
                 holder.song_item_audio.setVisibility(View.GONE);
                 holder.song_item_audio_pause.setVisibility(View.VISIBLE);
 
