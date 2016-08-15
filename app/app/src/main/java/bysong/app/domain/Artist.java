@@ -19,6 +19,7 @@ public class Artist {
         isArtistName = asArtistName;
     }
 
+    public String getArtistName()
     {
         return isArtistName;
     }
@@ -28,6 +29,7 @@ public class Artist {
         isImageFileName = asImageFileName;
     }
 
+    public String getImageFileName()
     {
         return isImageFileName;
     }
