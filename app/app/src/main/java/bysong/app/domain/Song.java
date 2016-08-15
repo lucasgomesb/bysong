@@ -11,16 +11,34 @@ import bysong.app.R;
  */
 public class Song {
 
-    private int imgArtist;
-    private String nameArtist;
+    private String isSongCode;
+    public String FileNameMp3;
+    public Artist Artist;
+    private String isTitle;
+    private int iiViewsCount;
+    public List<Verse> VersesList;
+    private SongRankStatus ioSongRankStatus;
 
+
+    public Song(String asSongCode, String asFileNameMp3, Artist aoArtist, String asTitle, int aiViewsCount, SongRankStatus aoSongRankStatus)
+    {
+
+        isSongCode = asSongCode;
+        FileNameMp3 = asFileNameMp3;
+        Artist = aoArtist;
+        isTitle = asTitle;
+        iiViewsCount = aiViewsCount;
+        ioSongRankStatus = aoSongRankStatus;
+
+        VersesList =  new ArrayList<Verse>();
+    }
+/*
     public Song(int imgArtist, String nameArtist){
 
-        this.imgArtist = imgArtist;
+        this.Ar = imgArtist;
         this.nameArtist = nameArtist;
 
     }
-
     public int getImgArtist() {
         return imgArtist;
     }
@@ -54,5 +72,5 @@ public class Song {
         return songs;
 
     }
-
+*/
 }

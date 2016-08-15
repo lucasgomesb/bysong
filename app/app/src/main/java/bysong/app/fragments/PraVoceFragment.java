@@ -14,6 +14,7 @@ import java.util.List;
 
 import bysong.app.R;
 import bysong.app.adapter.SongsAdapter;
+import bysong.app.controller.SongLibrary;
 import bysong.app.domain.Song;
 
 /**
@@ -30,7 +31,7 @@ public class PraVoceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_por_genero, container, false);
-        songs = Song.getSongs();
+        songs = new SongLibrary().GetSongList();
         recyclerView = (RecyclerView) view.findViewById(R.id.porGenero);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());

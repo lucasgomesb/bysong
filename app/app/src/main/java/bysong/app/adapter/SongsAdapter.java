@@ -51,8 +51,8 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsViewHol
     public void onBindViewHolder(SongsViewHolder holder, int position) {
 
         Song song = songs.get(position);
-        holder.img_artist.setImageResource(song.getImgArtist());
-        holder.name_song_artist.setText(song.getNameArtist());
+        holder.img_artist.setImageResource(R.drawable.artist_circle_adele);
+        holder.name_song_artist.setText(song.Artist.getArtistName());
         holder.song_item_star_1.setImageResource(R.drawable.song_item_start_on);
         holder.song_item_star_2.setImageResource(R.drawable.song_item_start_on);
         holder.song_item_star_3.setImageResource(R.drawable.song_item_start_off);
