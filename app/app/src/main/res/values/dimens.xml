@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="image_view_height">49dp</dimen>
     <dimen name="image_view_width">49dp</dimen>
+    <dimen name="image_view_slide_height">382dp</dimen>
+    <dimen name="image_view_slide_width">382dp</dimen>
 </resources>

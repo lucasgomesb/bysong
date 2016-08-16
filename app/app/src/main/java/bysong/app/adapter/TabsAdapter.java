@@ -61,11 +61,11 @@ public class TabsAdapter extends FragmentPagerAdapter {
 
         } else if (position == 1) {
 
-            f = new PraVoceFragment();
+            f = new NovasMusicasFragment();
 
         } else {
 
-            f = new NovasMusicasFragment();
+            f = new PraVoceFragment();
 
         }
 

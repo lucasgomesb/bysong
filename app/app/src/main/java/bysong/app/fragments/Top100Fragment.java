@@ -42,7 +42,7 @@ public class Top100Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_top_10, container, false);
-        songs = new SongLibrary().GetSongList();
+        songs = new SongLibrary().getSongList();
         //songs = Song.getSongs();
         playerMp3 = new PlayerMp3(getContext());
         recyclerView = (RecyclerView) view.findViewById(R.id.top10);

@@ -10,5 +10,8 @@
     <!-- Itens de menu -->
     <string name="settings">Configurações</string>
     <string name="ranking">Ranking</string>
+    <!-- Boas vindas -->
+    <string name="bem_vindo">Bem vindo ao BySong!</string>
+    <string name="vamos_comecar">Vamos começar?</string>
 
 </resources>

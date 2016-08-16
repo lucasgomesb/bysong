@@ -38,7 +38,7 @@ public class SongLibrary {
 
     }
 
-    public List<Song> GetSongList() {
+    public List<Song> getSongList() {
 
         List<Song> loSongList = new ArrayList<Song>();
         loSongList.add(new Song("dangerous.mp3", "dangerous.mp3", "Hello", 128, null, new Artist("Adele", R.drawable.artist_circle_adele), SongRankStatus.getStatus(SongRankStatus.DOWN)));
