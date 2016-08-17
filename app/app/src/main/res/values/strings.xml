@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">BySong</string>
+    <string name="activity_ranking_name">Ranking</string>
     <!-- Tabs Songs -->
     <string name="top_100">Top 100</string>
     <string name="novas_musicas">Novas Músicas</string>

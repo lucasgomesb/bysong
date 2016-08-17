@@ -1,6 +1,7 @@
 package bysong.app.activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
@@ -59,7 +60,7 @@ public class MainActivity extends BaseActivity {
         switch (item.getItemId()) {
 
             case R.id.action_ranking:
-                toast("Mostra o ranking");
+                startActivity(new Intent(this, RankingActivity.class));
                 break;
             case R.id.action_settings:
                 toast("Abre configurações");
