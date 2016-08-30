@@ -95,7 +95,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsViewHol
 
     public static class SongsViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView img_artist, song_item_audio, song_item_audio_pause, img_status;
+        public ImageView img_artist, song_item_audio, song_item_audio_pause, img_status, preview;
         private TextView name_song_artist, visualizacoes;
 
         public SongsViewHolder(View itemView) {
@@ -104,6 +104,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsViewHol
             img_artist = (ImageView) itemView.findViewById(R.id.img_artist);
             name_song_artist = (TextView) itemView.findViewById(R.id.name_song_artist);
             img_status = (ImageView) itemView.findViewById(R.id.img_status);
+            preview = (ImageView) itemView.findViewById(R.id.preview);
             visualizacoes = (TextView) itemView.findViewById(R.id.visualizacoes);
             song_item_audio = (ImageView) itemView.findViewById(R.id.song_item_audio);
             song_item_audio_pause = (ImageView) itemView.findViewById(R.id.song_item_audio_pause);

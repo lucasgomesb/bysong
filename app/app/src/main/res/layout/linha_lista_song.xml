@@ -81,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginRight="15dp">
+                android:layout_marginRight="5dp">
 
                 <ImageView
                     android:id="@+id/song_item_start_1"
@@ -107,6 +107,14 @@
 
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/preview"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/preview"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"/>
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,7 +125,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/song_item_audio_pause"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="10dp"
                     android:visibility="gone"/>
 
                 <ImageView
@@ -125,7 +133,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/song_item_audio"
-                    android:layout_marginRight="5dp"/>
+                    android:layout_marginRight="10dp"/>
 
             </FrameLayout>
 
