@@ -1,11 +1,13 @@
 package bysong.app.fragments;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +25,12 @@ import bysong.app.domain.Song;
  */
 public class PraVoceFragment extends Fragment {
 
+    private static final String TAG = "songplayer";
     private RecyclerView recyclerView;
     private List<Song> songs;
     private PlayerMp3 playerMp3;
+
+    private boolean isPlaying;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +47,20 @@ public class PraVoceFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_por_genero, container, false);
         songs = new SongLibrary().getSongList();
         //songs = Song.getSongs();
-        playerMp3 = new PlayerMp3(getContext());
+        playerMp3 = new PlayerMp3(getContext(), new MediaPlayer.OnPreparedListener() {
+
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+
+                Log.d(TAG, "onPrepared()");
+                isPlaying = true;
+                mediaPlayer.start();
+                mediaPlayer.setLooping(true);
+
+            }
+
+        });
+        // RecyclerView
         recyclerView = (RecyclerView) view.findViewById(R.id.porGenero);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -58,7 +76,7 @@ public class PraVoceFragment extends Fragment {
             @Override
             public void onClickPlay(SongsAdapter.SongsViewHolder holder, int id) {
 
-                playerMp3.start("");
+                playerMp3.start("https://albireo1.sscdn.co/palcomp3/c/9/e/8/bandatorpedooficial-banda-torpedo-pra-nao-morrer-de-paixao-audio-oficial-2016-9cff4a7d.mp3");
                 holder.song_item_audio.setVisibility(View.GONE);
                 holder.song_item_audio_pause.setVisibility(View.VISIBLE);
 
@@ -67,14 +85,51 @@ public class PraVoceFragment extends Fragment {
             @Override
             public void onClickPause(SongsAdapter.SongsViewHolder holder, int id) {
 
-                playerMp3.pause();
-                holder.song_item_audio.setVisibility(View.VISIBLE);
-                holder.song_item_audio_pause.setVisibility(View.GONE);
+                isPlaying = false;
+
+                if (playerMp3 != null) {
+
+                    playerMp3.pause();
+                    holder.song_item_audio.setVisibility(View.VISIBLE);
+                    holder.song_item_audio_pause.setVisibility(View.GONE);
+
+                }
 
             }
 
         };
 
     }
+
+    @Override
+    public void onPause() {
+
+        super.onPause();
+
+        isPlaying = false;
+
+        if (playerMp3 != null) {
+
+            playerMp3.pause();
+
+        }
+
+    }
+
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
+
+        isPlaying = false;
+
+        if (playerMp3 != null) {
+
+            playerMp3.stop();
+
+        }
+
+    }
+
 
 }

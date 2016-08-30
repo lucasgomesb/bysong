@@ -48,13 +48,6 @@ public class NovasMusicasFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_imagem_1, container, false);
-        //songs = new SongLibrary().GetSongList();
-        //songs = Song.getSongs();
-        //playerMp3 = new PlayerMp3(getContext());
-        //recyclerView = (RecyclerView) view.findViewById(R.id.novasMusicas);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        //recyclerView.setItemAnimator(new DefaultItemAnimator());
-        //recyclerView.setAdapter(new SongsAdapter(getContext(), songs, onClickSongsMuisc()));
 
         img1 = (ImageView) view.findViewById(R.id.img1);
         img2 = (ImageView) view.findViewById(R.id.img2);
@@ -112,7 +105,7 @@ public class NovasMusicasFragment extends Fragment {
             @Override
             public void onClickPlay(SongsAdapter.SongsViewHolder holder, int id) {
 
-                playerMp3.start("");
+                //playerMp3.start("");
                 holder.song_item_audio.setVisibility(View.GONE);
                 holder.song_item_audio_pause.setVisibility(View.VISIBLE);
 
