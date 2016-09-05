@@ -1,5 +1,6 @@
 package bysong.app.fragments;
 
+import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.IOException;
 import java.util.List;
 
 import bysong.app.R;
@@ -23,12 +25,12 @@ import bysong.app.domain.Song;
 /**
  * Created by Tiago on 10/08/2016.
  */
-public class Top100Fragment extends Fragment {
+public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedListener {
 
     private static final String TAG = "songplayer";
     private RecyclerView recyclerView;
     private List<Song> songs;
-    private PlayerMp3 playerMp3;
+    private PlayerMp3 playerMp3, playerPreview;
 
     private boolean isPlaying;
 
@@ -47,19 +49,8 @@ public class Top100Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_top_10, container, false);
         songs = new SongLibrary().getSongList();
         //songs = Song.getSongs();
-        playerMp3 = new PlayerMp3(getContext(), new MediaPlayer.OnPreparedListener() {
-
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-
-                Log.d(TAG, "onPrepared()");
-                isPlaying = true;
-                mediaPlayer.start();
-                mediaPlayer.setLooping(true);
-
-            }
-
-        });
+        playerMp3 = new PlayerMp3(getContext(), this);
+        playerPreview = new PlayerMp3(getContext(), this);
         // RecyclerView
         recyclerView = (RecyclerView) view.findViewById(R.id.top10);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -97,6 +88,22 @@ public class Top100Fragment extends Fragment {
 
             }
 
+            @Override
+            public void onClickPlayPreview(SongsAdapter.SongsViewHolder holder, int id) {
+
+                try {
+
+                   AssetFileDescriptor asset = getActivity().getAssets().openFd("pra_nao_morrer_de_paixao_refrao.mp3");
+                   playerPreview.start(asset.getFileDescriptor(), asset.getStartOffset(), asset.getLength());
+
+                } catch (IOException e) {
+
+                    Log.d(TAG, e.getMessage(), e);
+
+                }
+
+            }
+
         };
 
     }
@@ -128,6 +135,16 @@ public class Top100Fragment extends Fragment {
             playerMp3.stop();
 
         }
+
+    }
+
+    @Override
+    public void onPrepared(MediaPlayer mediaPlayer) {
+
+        Log.d(TAG, "onPrepared()");
+        isPlaying = true;
+        mediaPlayer.start();
+        mediaPlayer.setLooping(true);
 
     }
 

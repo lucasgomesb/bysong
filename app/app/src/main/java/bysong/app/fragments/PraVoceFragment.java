@@ -1,5 +1,6 @@
 package bysong.app.fragments;
 
+import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.IOException;
 import java.util.List;
 
 import bysong.app.R;
@@ -92,6 +94,22 @@ public class PraVoceFragment extends Fragment {
                     playerMp3.pause();
                     holder.song_item_audio.setVisibility(View.VISIBLE);
                     holder.song_item_audio_pause.setVisibility(View.GONE);
+
+                }
+
+            }
+
+            @Override
+            public void onClickPlayPreview(SongsAdapter.SongsViewHolder holder, int id) {
+
+                try {
+
+                    AssetFileDescriptor asset = getActivity().getAssets().openFd("pra_nao_morrer_de_paixao_refrao.mp3");
+                    playerMp3.start(asset.getFileDescriptor(), asset.getStartOffset(), asset.getLength());
+
+                } catch (IOException e) {
+
+                    Log.d(TAG, e.getMessage(), e);
 
                 }
 

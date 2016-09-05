@@ -120,6 +120,13 @@ public class NovasMusicasFragment extends Fragment {
 
             }
 
+            @Override
+            public void onClickPlayPreview(SongsAdapter.SongsViewHolder holder, int id) {
+
+
+
+            }
+
         };
 
     }
