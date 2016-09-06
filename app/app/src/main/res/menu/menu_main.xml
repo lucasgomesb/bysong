@@ -9,7 +9,7 @@
 
     <item android:id="@+id/action_ranking"
         android:title="@string/ranking"
-        android:icon="@drawable/white_trophy"
+        android:icon="@drawable/top_menubar_trophy"
         app:showAsAction="always"/>
 
 </menu>
