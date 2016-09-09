@@ -14,36 +14,40 @@ import bysong.app.R;
 /**
  * Created by Tiago on 15/08/2016.
  */
-public class PlayerMp3 implements MediaPlayer.OnCompletionListener, MediaPlayer.OnBufferingUpdateListener,
+public class PlayerMp3 implements MediaPlayer.OnBufferingUpdateListener,
         MediaPlayer.OnSeekCompleteListener {
 
     // Constante para ver os logs
     private static final String CATEGORIA = "bysong";
     // Declara um objeto MediaPlayer
     private MediaPlayer player;
-    private int currentTime;
+    private static PlayerMp3 playerMp3;
 
-    public PlayerMp3(Context context, MediaPlayer.OnPreparedListener onPreparedListener) {
+    private PlayerMp3(MediaPlayer.OnPreparedListener onPreparedListener,
+                      MediaPlayer.OnCompletionListener onCompletionListener) {
 
-        // Cria o MediaPlayer
         player = new MediaPlayer();
-        // Executa o listener quando terminar a música
-        player.setOnCompletionListener(this);
         player.setOnPreparedListener(onPreparedListener);
-        player.setOnBufferingUpdateListener(this);
-        player.setOnSeekCompleteListener(this);
+        player.setOnCompletionListener(onCompletionListener);
 
     }
 
-    public PlayerMp3(Context context, int mp3, MediaPlayer.OnPreparedListener onPreparedListener) {
+    public static synchronized PlayerMp3 getInstance(MediaPlayer.OnPreparedListener onPreparedListener,
+                                                     MediaPlayer.OnCompletionListener onCompletionListener) {
 
-        // Cria o MediaPlayer
-        player = MediaPlayer.create(context, mp3);
-        // Executa o listener quando terminar a música
-        player.setOnCompletionListener(this);
-        player.setOnPreparedListener(onPreparedListener);
-        player.setOnBufferingUpdateListener(this);
-        player.setOnSeekCompleteListener(this);
+        if (playerMp3 == null) {
+
+            playerMp3 = new PlayerMp3(onPreparedListener, onCompletionListener);
+
+        }
+
+        return playerMp3;
+
+    }
+
+    public void killMyInstance() {
+
+        playerMp3 = null;
 
     }
 
@@ -76,32 +80,20 @@ public class PlayerMp3 implements MediaPlayer.OnCompletionListener, MediaPlayer.
 
     }
 
-    public void start() {
-
-        player.start();
-
-    }
-
     // Pausa a música e altera o status
     public void pause() {
 
+        Log.d(CATEGORIA, "pause()");
         player.pause();
 
     }
     // Para a música e altera o status
     public void stop() {
 
+        Log.d(CATEGORIA, "stop()");
         player.stop();
         player.release();
         player = null;
-
-    }
-
-    @Override
-    public void onCompletion(MediaPlayer mediaPlayer) {
-
-        Log.d(CATEGORIA, "onCompletion()");
-        stop();
 
     }
 

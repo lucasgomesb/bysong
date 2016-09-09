@@ -1,5 +1,6 @@
 package bysong.app.fragments;
 
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 import bysong.app.R;
+import bysong.app.activity.MusicaActivity;
 import bysong.app.adapter.SongsAdapter;
 import bysong.app.controller.SongLibrary;
 import bysong.app.domain.PlayerMp3;
@@ -25,12 +27,12 @@ import bysong.app.domain.Song;
 /**
  * Created by Tiago on 10/08/2016.
  */
-public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedListener {
+public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
     private static final String TAG = "songplayer";
     private RecyclerView recyclerView;
     private List<Song> songs;
-    private PlayerMp3 playerMp3, playerPreview;
+    private PlayerMp3 playerMp3, previewMp3;
 
     private boolean isPlaying;
 
@@ -48,9 +50,7 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
 
         View view = inflater.inflate(R.layout.fragment_top_10, container, false);
         songs = new SongLibrary().getSongList();
-        //songs = Song.getSongs();
-        playerMp3 = new PlayerMp3(getContext(), this);
-        playerPreview = new PlayerMp3(getContext(), this);
+        //songs = Song.getSongs()
         // RecyclerView
         recyclerView = (RecyclerView) view.findViewById(R.id.top10);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -67,6 +67,8 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
             @Override
             public void onClickPlay(SongsAdapter.SongsViewHolder holder, int id) {
 
+                Log.d(TAG, "onClickPlay()");
+                playerMp3 = PlayerMp3.getInstance(Top100Fragment.this, Top100Fragment.this);
                 playerMp3.start("https://albireo1.sscdn.co/palcomp3/c/9/e/8/bandatorpedooficial-banda-torpedo-pra-nao-morrer-de-paixao-audio-oficial-2016-9cff4a7d.mp3");
                 holder.song_item_audio.setVisibility(View.GONE);
                 holder.song_item_audio_pause.setVisibility(View.VISIBLE);
@@ -80,6 +82,7 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
 
                 if (playerMp3 != null) {
 
+                    Log.d(TAG, "onClickPause()");
                     playerMp3.pause();
                     holder.song_item_audio.setVisibility(View.VISIBLE);
                     holder.song_item_audio_pause.setVisibility(View.GONE);
@@ -91,16 +94,24 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
             @Override
             public void onClickPlayPreview(SongsAdapter.SongsViewHolder holder, int id) {
 
-                try {
+                /*try {
 
-                   AssetFileDescriptor asset = getActivity().getAssets().openFd("pra_nao_morrer_de_paixao_refrao.mp3");
-                   playerPreview.start(asset.getFileDescriptor(), asset.getStartOffset(), asset.getLength());
+                    previewMp3 = PlayerMp3.getInstance(Top100Fragment.this);
+                    AssetFileDescriptor asset = getActivity().getAssets().openFd("pra_nao_morrer_de_paixao_refrao.mp3");
+                    previewMp3.start(asset.getFileDescriptor(), asset.getStartOffset(), asset.getLength());
 
                 } catch (IOException e) {
 
-                    Log.d(TAG, e.getMessage(), e);
+                    Log.e(TAG, e.getMessage(), e);
 
-                }
+                }*/
+
+            }
+
+            @Override
+            public void onClickTrecho(SongsAdapter.SongsViewHolder holder, int id) {
+
+                startActivity(new Intent(getContext(), MusicaActivity.class));
 
             }
 
@@ -112,6 +123,8 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
     public void onPause() {
 
         super.onPause();
+
+        Log.d(TAG, "onPause()");
 
         isPlaying = false;
 
@@ -128,11 +141,14 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
 
         super.onDestroy();
 
+        Log.d(TAG, "onStop()");
+
         isPlaying = false;
 
         if (playerMp3 != null) {
 
             playerMp3.stop();
+            playerMp3.killMyInstance();
 
         }
 
@@ -148,4 +164,11 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
 
     }
 
+    @Override
+    public void onCompletion(MediaPlayer mediaPlayer) {
+
+        Log.d(TAG, "onCompletion()");
+        playerMp3.stop();
+
+    }
 }

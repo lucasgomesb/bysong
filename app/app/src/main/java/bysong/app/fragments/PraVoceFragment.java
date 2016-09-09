@@ -1,5 +1,6 @@
 package bysong.app.fragments;
 
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 import bysong.app.R;
+import bysong.app.activity.MusicaActivity;
 import bysong.app.adapter.SongsAdapter;
 import bysong.app.controller.SongLibrary;
 import bysong.app.domain.PlayerMp3;
@@ -25,12 +27,12 @@ import bysong.app.domain.Song;
 /**
  * Created by Tiago on 10/08/2016.
  */
-public class PraVoceFragment extends Fragment {
+public class PraVoceFragment extends Fragment implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
     private static final String TAG = "songplayer";
     private RecyclerView recyclerView;
     private List<Song> songs;
-    private PlayerMp3 playerMp3;
+    private PlayerMp3 playerMp3, previewMp3;
 
     private boolean isPlaying;
 
@@ -49,19 +51,6 @@ public class PraVoceFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_por_genero, container, false);
         songs = new SongLibrary().getSongList();
         //songs = Song.getSongs();
-        playerMp3 = new PlayerMp3(getContext(), new MediaPlayer.OnPreparedListener() {
-
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-
-                Log.d(TAG, "onPrepared()");
-                isPlaying = true;
-                mediaPlayer.start();
-                mediaPlayer.setLooping(true);
-
-            }
-
-        });
         // RecyclerView
         recyclerView = (RecyclerView) view.findViewById(R.id.porGenero);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -78,6 +67,7 @@ public class PraVoceFragment extends Fragment {
             @Override
             public void onClickPlay(SongsAdapter.SongsViewHolder holder, int id) {
 
+                playerMp3 = PlayerMp3.getInstance(PraVoceFragment.this, PraVoceFragment.this);
                 playerMp3.start("https://albireo1.sscdn.co/palcomp3/c/9/e/8/bandatorpedooficial-banda-torpedo-pra-nao-morrer-de-paixao-audio-oficial-2016-9cff4a7d.mp3");
                 holder.song_item_audio.setVisibility(View.GONE);
                 holder.song_item_audio_pause.setVisibility(View.VISIBLE);
@@ -102,16 +92,24 @@ public class PraVoceFragment extends Fragment {
             @Override
             public void onClickPlayPreview(SongsAdapter.SongsViewHolder holder, int id) {
 
-                try {
+                /*try {
 
+                    previewMp3 = PlayerMp3.getInstance(PraVoceFragment.this);
                     AssetFileDescriptor asset = getActivity().getAssets().openFd("pra_nao_morrer_de_paixao_refrao.mp3");
-                    playerMp3.start(asset.getFileDescriptor(), asset.getStartOffset(), asset.getLength());
+                    previewMp3.start(asset.getFileDescriptor(), asset.getStartOffset(), asset.getLength());
 
                 } catch (IOException e) {
 
-                    Log.d(TAG, e.getMessage(), e);
+                    Log.e(TAG, e.getMessage(), e);
 
-                }
+                }*/
+
+            }
+
+            @Override
+            public void onClickTrecho(SongsAdapter.SongsViewHolder holder, int id) {
+
+                startActivity(new Intent(getContext(), MusicaActivity.class));
 
             }
 
@@ -144,10 +142,25 @@ public class PraVoceFragment extends Fragment {
         if (playerMp3 != null) {
 
             playerMp3.stop();
+            playerMp3.killMyInstance();
 
         }
 
     }
 
 
+    @Override
+    public void onPrepared(MediaPlayer mediaPlayer) {
+
+        Log.d(TAG, "onPrepared()");
+        isPlaying = true;
+        mediaPlayer.start();
+        mediaPlayer.setLooping(true);
+
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mediaPlayer) {
+
+    }
 }

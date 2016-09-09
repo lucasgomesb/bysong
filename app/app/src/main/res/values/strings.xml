@@ -14,5 +14,17 @@
     <!-- Boas vindas -->
     <string name="bem_vindo">Bem vindo ao BySong!</string>
     <string name="vamos_comecar">Vamos começar?</string>
+    <!-- Refrão -->
+    <string name="refrão">
+        Pra não morrer de paixão\n
+        Resolvi de vez me desligar de você\n
+        Pra não morrer de paixão\n
+        As fotografias eu queimei pra não ver\n
+        Pra não morrer de paixão\n
+        Vou recomeçar e vou voltar a viver\n
+        Pra não morrer de paixão\n
+        E perder o chão resolvi te esquecer\n
+    </string>
+    <string name="tocar_trecho_musica">Tocar Trecho</string>
 
 </resources>

@@ -98,37 +98,4 @@ public class NovasMusicasFragment extends Fragment {
 
     }
 
-    private SongsAdapter.OnClickSongs onClickSongsMuisc() {
-
-        return new SongsAdapter.OnClickSongs() {
-
-            @Override
-            public void onClickPlay(SongsAdapter.SongsViewHolder holder, int id) {
-
-                //playerMp3.start("");
-                holder.song_item_audio.setVisibility(View.GONE);
-                holder.song_item_audio_pause.setVisibility(View.VISIBLE);
-
-            }
-
-            @Override
-            public void onClickPause(SongsAdapter.SongsViewHolder holder, int id) {
-
-                playerMp3.pause();
-                holder.song_item_audio.setVisibility(View.VISIBLE);
-                holder.song_item_audio_pause.setVisibility(View.GONE);
-
-            }
-
-            @Override
-            public void onClickPlayPreview(SongsAdapter.SongsViewHolder holder, int id) {
-
-
-
-            }
-
-        };
-
-    }
-
 }
