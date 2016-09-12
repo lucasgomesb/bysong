@@ -6,15 +6,18 @@
     android:gravity="center">
 
     <ImageView
-        android:layout_width="256dp"
-        android:layout_height="256dp"
-        android:src="@mipmap/icone_mobile"/>
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/logo_com_nome"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/agurade"
-        android:textSize="40sp"
-        android:textStyle="bold"/>
+
+    <ProgressBar
+        android:id="@+id/splash_screen_progress_bar"
+        android:layout_width="200dp"
+        android:layout_height="3dp"
+        android:progressDrawable="@drawable/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_centerInParent="true" />
 
 </LinearLayout>

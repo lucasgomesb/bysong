@@ -15,14 +15,14 @@ public class User {
     private String lastName;
     private int rankPosition;
     private int score;
-    private int imageFileName;
+    private String imageFileName;
     private UserType userType;
 
     /* Obs.: Sempre que um construtor for utilizado para inicializar os atributos é preciso criar
      * um outro construtor vazio, pois nem sempre vamos inicializar os atributos ao instanciar o mesmo */
     public User() {}
 
-    public User(String userCode, int imageFileName, String firstName, String lastName,
+    public User(String userCode, String imageFileName, String firstName, String lastName,
                 int rankPosition, int score) {
 
         this.userCode = userCode;
@@ -34,6 +34,7 @@ public class User {
 
     }
 
+    /*
     public static List<User> getUser() {
 
         List<User> users = new ArrayList<User>();
@@ -48,7 +49,7 @@ public class User {
         users.add(new User("0020", R.drawable.artist_circle_nirvana, "Jair Bolsonaro", "Jair Bolsonaro", 9, 1000));
         return users;
 
-    }
+    }*/
 
 
     public String getUserCode() {
@@ -111,13 +112,13 @@ public class User {
 
     }
 
-    public int getImageFileName() {
+    public String getImageFileName() {
 
         return imageFileName;
 
     }
 
-    public void setImageFileName(int imageFileName) {
+    public void setImageFileName(String imageFileName) {
 
         this.imageFileName = imageFileName;
 

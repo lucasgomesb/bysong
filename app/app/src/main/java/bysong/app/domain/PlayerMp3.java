@@ -85,7 +85,8 @@ public class PlayerMp3 implements MediaPlayer.OnCompletionListener, MediaPlayer.
     // Pausa a música e altera o status
     public void pause() {
 
-        player.pause();
+        if (player != null)
+            player.pause();
 
     }
     // Para a música e altera o status
