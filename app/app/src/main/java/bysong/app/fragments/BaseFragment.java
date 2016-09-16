@@ -12,23 +12,23 @@ import android.support.v4.app.Fragment;
 public class BaseFragment extends Fragment {
 
     // Interface de interação com AsyncTask
-    public interface OnClickTask {
+    public interface OnExecuteTask {
 
-        void execute();
-        void updateView();
+        void execute(Object parameters);
+        void updateView(Object result);
 
     }
 
-    protected void executeTask(OnClickTask onClickTask) {
+    protected void executeTask(OnExecuteTask onExecuteTask) {
 
-        SongsAsynckTask task = new SongsAsynckTask(onClickTask);
+        SongsAsynckTask task = new SongsAsynckTask(onExecuteTask);
         task.execute();
 
     }
 
-    protected void cancelTask(OnClickTask onClickTask) {
+    protected void cancelTask(OnExecuteTask onExecuteTask) {
 
-        SongsAsynckTask task = new SongsAsynckTask(onClickTask);
+        SongsAsynckTask task = new SongsAsynckTask(onExecuteTask);
 
         if (task != null) {
 
@@ -38,28 +38,28 @@ public class BaseFragment extends Fragment {
 
     }
 
-    public class SongsAsynckTask extends AsyncTask<Void, Void, Void> {
+    public class SongsAsynckTask extends AsyncTask<Object, Void, Object> {
 
-        private OnClickTask onClickTask;
+        private OnExecuteTask onExecuteTask;
 
-        public SongsAsynckTask(OnClickTask onClickTask) {
+        public SongsAsynckTask(OnExecuteTask onExecuteTask) {
 
-            this.onClickTask = onClickTask;
+            this.onExecuteTask = onExecuteTask;
 
         }
 
         @Override
-        protected Void doInBackground(Void... voids) {
+        protected Void doInBackground(Object... voids) {
 
-            onClickTask.execute();
+            onExecuteTask.execute(null);
             return null;
 
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
+        protected void onPostExecute(Object result) {
 
-            onClickTask.updateView();
+            onExecuteTask.updateView(result);
 
         }
 

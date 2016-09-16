@@ -22,13 +22,6 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.UserView
 
     private Context context;
     private List<User> users;
-    private OnClickUser onClickUser;
-
-    private interface OnClickUser {
-
-        void onClickUser(UserViewHolder holder, int id);
-
-    }
 
     public RankingAdapter(Context context, List<User> users) {
 
@@ -50,7 +43,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.UserView
     public void onBindViewHolder(UserViewHolder holder, int position) {
 
         User user = users.get(position);
-        holder.image_file_user.setImageResource(user.getImageFileName());
+        holder.image_file_user.setImageResource(context.getResources().getIdentifier(user.getImageFileName(), "drawable", "bysong.app"));
         holder.user_name.setText(user.getFirstName());
         holder.user_points.setText(String.valueOf(user.getScore()));
         if (user.getRankPosition() == 1) {

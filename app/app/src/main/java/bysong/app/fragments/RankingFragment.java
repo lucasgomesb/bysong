@@ -15,28 +15,40 @@ import java.util.List;
 import bysong.app.R;
 import bysong.app.adapter.RankingAdapter;
 import bysong.app.domain.User;
+import bysong.app.service.BySongServiceManager;
 
 /**
  * Created by Tiago on 17/08/2016.
  */
-public class RankingFramgnet extends Fragment {
+public class RankingFragment extends Fragment implements CallBackInterface {
 
     private RecyclerView recyclerView;
-    private List<User> users;
+    private List<User> usersList;
     private RankingAdapter adapter;
+    View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_ranking, container, false);
-        users = User.getUser();
-        adapter = new RankingAdapter(getContext(), users);
+        view = inflater.inflate(R.layout.fragment_ranking, container, false);
+
+        BySongServiceManager bySongServiceManager = new BySongServiceManager();
+        bySongServiceManager.getUserFriends(this);
+
+        return view;
+    }
+
+    @Override
+    public void executeCallBack(Object result) {
+
+        usersList = (List<User>) result;
+
+        adapter = new RankingAdapter(getContext(), usersList);
         recyclerView = (RecyclerView) view.findViewById(R.id.rancking_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
-        return view;
-
     }
+
 }
