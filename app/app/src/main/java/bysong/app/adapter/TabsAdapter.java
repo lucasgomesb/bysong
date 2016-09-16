@@ -6,9 +6,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import bysong.app.R;
-import bysong.app.fragments.NovasMusicasFragment;
+import bysong.app.fragments.GeneroFragment;
+import bysong.app.fragments.LancamentosFragment;
 import bysong.app.fragments.PraVoceFragment;
-import bysong.app.fragments.Top100Fragment;
+import bysong.app.fragments.TopSemanalFragment;
 
 /**
  * Created by Tiago on 10/08/2016.
@@ -28,7 +29,7 @@ public class TabsAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
 
-        return 3;
+        return 4;
 
     }
 
@@ -38,15 +39,19 @@ public class TabsAdapter extends FragmentPagerAdapter {
 
         if (position == 0) {
 
-            return context.getString(R.string.top_100);
+            return context.getString(R.string.pra_voce);
 
         } else if (position == 1) {
 
-            return context.getString(R.string.novas_musicas);
+            return context.getString(R.string.lancamento);
+
+        } else if (position == 2) {
+
+            return context.getString(R.string.top_semanal);
 
         }
 
-        return context.getString(R.string.pra_voce);
+        return context.getString(R.string.genero);
 
     }
 
@@ -57,15 +62,19 @@ public class TabsAdapter extends FragmentPagerAdapter {
 
         if (position == 0) {
 
-            f = new Top100Fragment();
+            f = new PraVoceFragment();
 
         } else if (position == 1) {
 
-            f = new NovasMusicasFragment();
+            f = new LancamentosFragment();
+
+        } else if (position == 2){
+
+            f = new TopSemanalFragment();
 
         } else {
 
-            f = new PraVoceFragment();
+            f = new GeneroFragment();
 
         }
 

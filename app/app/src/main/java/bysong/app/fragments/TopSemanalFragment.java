@@ -1,7 +1,6 @@
 package bysong.app.fragments;
 
 import android.content.Intent;
-import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.io.IOException;
 import java.util.List;
 
 import bysong.app.R;
@@ -27,7 +25,7 @@ import bysong.app.domain.Song;
 /**
  * Created by Tiago on 10/08/2016.
  */
-public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
+public class TopSemanalFragment extends Fragment implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
     private static final String TAG = "songplayer";
     private RecyclerView recyclerView;
@@ -48,7 +46,7 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_top_10, container, false);
+        View view = inflater.inflate(R.layout.fragment_top_semanal, container, false);
         songs = new SongLibrary().getSongList();
         //songs = Song.getSongs()
         // RecyclerView
@@ -68,7 +66,7 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
             public void onClickPlay(SongsAdapter.SongsViewHolder holder, int id) {
 
                 Log.d(TAG, "onClickPlay()");
-                playerMp3 = PlayerMp3.getInstance(Top100Fragment.this, Top100Fragment.this);
+                playerMp3 = PlayerMp3.getInstance(TopSemanalFragment.this, TopSemanalFragment.this);
                 playerMp3.start("https://albireo1.sscdn.co/palcomp3/c/9/e/8/bandatorpedooficial-banda-torpedo-pra-nao-morrer-de-paixao-audio-oficial-2016-9cff4a7d.mp3");
                 holder.song_item_audio.setVisibility(View.GONE);
                 holder.song_item_audio_pause.setVisibility(View.VISIBLE);
@@ -96,7 +94,7 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
 
                 /*try {
 
-                    previewMp3 = PlayerMp3.getInstance(Top100Fragment.this);
+                    previewMp3 = PlayerMp3.getInstance(TopSemanalFragment.this);
                     AssetFileDescriptor asset = getActivity().getAssets().openFd("pra_nao_morrer_de_paixao_refrao.mp3");
                     previewMp3.start(asset.getFileDescriptor(), asset.getStartOffset(), asset.getLength());
 

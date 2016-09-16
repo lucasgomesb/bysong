@@ -7,18 +7,21 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.List;
 
 import bysong.app.R;
 import bysong.app.activity.MusicaActivity;
+import bysong.app.adapter.PraVoceAdapter;
 import bysong.app.adapter.SongsAdapter;
 import bysong.app.controller.SongLibrary;
 import bysong.app.domain.PlayerMp3;
@@ -30,7 +33,7 @@ import bysong.app.domain.Song;
 public class PraVoceFragment extends Fragment implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
     private static final String TAG = "songplayer";
-    private RecyclerView recyclerView;
+    private RecyclerView recycler_pra_voce, recycler_seus_amigos, recycler_ultimas;
     private List<Song> songs;
     private PlayerMp3 playerMp3, previewMp3;
 
@@ -48,74 +51,59 @@ public class PraVoceFragment extends Fragment implements MediaPlayer.OnPreparedL
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_por_genero, container, false);
-        songs = new SongLibrary().getSongList();
-        //songs = Song.getSongs();
+        View view = inflater.inflate(R.layout.fragment_pra_voce, container, false);
+        //songs = new SongLibrary().getSongList();
+        songs = Song.getSongsArtist();
         // RecyclerView
-        recyclerView = (RecyclerView) view.findViewById(R.id.porGenero);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new SongsAdapter(getContext(), songs, onClickSongsMuisc()));
+        getRecyclerPraVoce(view);
+        getRecyclerSeusAmigos(view);
+        getRecyclerUltimas(view);
         return view;
 
     }
 
-    private SongsAdapter.OnClickSongs onClickSongsMuisc() {
+    private void getRecyclerPraVoce(View view) {
 
-        return new SongsAdapter.OnClickSongs() {
+        recycler_pra_voce = (RecyclerView) view.findViewById(R.id.recycler_pra_voce);
+        recycler_pra_voce.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false));
+        recycler_pra_voce.setItemAnimator(new DefaultItemAnimator());
+        recycler_pra_voce.setAdapter(new PraVoceAdapter(getContext(), songs, onClickSongsMusic()));
 
-            @Override
-            public void onClickPlay(SongsAdapter.SongsViewHolder holder, int id) {
+    }
 
-                playerMp3 = PlayerMp3.getInstance(PraVoceFragment.this, PraVoceFragment.this);
-                playerMp3.start("https://albireo1.sscdn.co/palcomp3/c/9/e/8/bandatorpedooficial-banda-torpedo-pra-nao-morrer-de-paixao-audio-oficial-2016-9cff4a7d.mp3");
-                holder.song_item_audio.setVisibility(View.GONE);
-                holder.song_item_audio_pause.setVisibility(View.VISIBLE);
+    private void getRecyclerSeusAmigos(View view) {
 
-            }
+        recycler_seus_amigos = (RecyclerView) view.findViewById(R.id.recycler_seus_amigos);
+        recycler_seus_amigos.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false));
+        recycler_seus_amigos.setItemAnimator(new DefaultItemAnimator());
+        recycler_seus_amigos.setAdapter(new PraVoceAdapter(getContext(), songs, onClickSongsMusic()));
 
-            @Override
-            public void onClickPause(SongsAdapter.SongsViewHolder holder, int id) {
+    }
 
-                isPlaying = false;
+    private void getRecyclerUltimas(View view) {
 
-                if (playerMp3 != null) {
+        recycler_ultimas = (RecyclerView) view.findViewById(R.id.recycler_ultimas);
+        recycler_ultimas.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false));
+        recycler_ultimas.setItemAnimator(new DefaultItemAnimator());
+        recycler_ultimas.setAdapter(new PraVoceAdapter(getContext(), songs, onClickSongsMusic()));
 
-                    playerMp3.pause();
-                    holder.song_item_audio.setVisibility(View.VISIBLE);
-                    holder.song_item_audio_pause.setVisibility(View.GONE);
+    }
 
-                }
+    private PraVoceAdapter.OnClickSongsCallback onClickSongsMusic() {
 
-            }
-
-            @Override
-            public void onClickPlayPreview(SongsAdapter.SongsViewHolder holder, int id) {
-
-                /*try {
-
-                    previewMp3 = PlayerMp3.getInstance(PraVoceFragment.this);
-                    AssetFileDescriptor asset = getActivity().getAssets().openFd("pra_nao_morrer_de_paixao_refrao.mp3");
-                    previewMp3.start(asset.getFileDescriptor(), asset.getStartOffset(), asset.getLength());
-
-                } catch (IOException e) {
-
-                    Log.e(TAG, e.getMessage(), e);
-
-                }*/
-
-            }
+        return new PraVoceAdapter.OnClickSongsCallback() {
 
             @Override
-            public void onClickTrecho(SongsAdapter.SongsViewHolder holder, int id) {
+            public void onClickPlay(PraVoceAdapter.SongsViewHolder holder, int id) {
 
-                startActivity(new Intent(getContext(), MusicaActivity.class));
+                Toast.makeText(getContext(), "Tocar Música", Toast.LENGTH_SHORT).show();
 
             }
 
         };
 
     }
+
 
     @Override
     public void onPause() {

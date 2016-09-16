@@ -40,6 +40,7 @@ public class MainActivity extends BaseActivity {
         // Tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         int cor = ContextCompat.getColor(this, R.color.white);
         // Cor branca no texto (o fundo azul foi definido no layout)
         tabLayout.setTabTextColors(cor, cor);

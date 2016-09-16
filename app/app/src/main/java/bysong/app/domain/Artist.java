@@ -29,7 +29,7 @@ public class Artist {
 
     public void setImageFileArtist(int imageFileArtist) {
 
-        this.imageFileArtist = this.imageFileArtist;
+        this.imageFileArtist = imageFileArtist;
 
     }
 

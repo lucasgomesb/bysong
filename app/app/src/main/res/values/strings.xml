@@ -3,9 +3,12 @@
     <string name="app_name">BySong</string>
     <string name="activity_ranking_name">Ranking</string>
     <!-- Tabs Songs -->
-    <string name="top_100">Top 100</string>
-    <string name="novas_musicas">Novas Músicas</string>
+    <string name="top_semanal">Top Semanal</string>
+    <string name="lancamento">Lançamento</string>
     <string name="pra_voce">Pra Você</string>
+    <string name="seus_amigos">Seus amigos estão ouvindo</string>
+    <string name="ultimas">Últimas tocadas</string>
+    <string name="genero">Gênero</string>
     <!-- Mensagem Splash Screen -->
     <string name="agurade">Aguarde...</string>
     <!-- Itens de menu -->
@@ -26,5 +29,8 @@
         E perder o chão resolvi te esquecer\n
     </string>
     <string name="tocar_trecho_musica">Tocar Trecho</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
