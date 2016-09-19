@@ -7,7 +7,7 @@
 
     <ImageView
         android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_height="51dp"
         android:layout_marginBottom="15dp"
         android:src="@drawable/logo_com_nome"/>
 

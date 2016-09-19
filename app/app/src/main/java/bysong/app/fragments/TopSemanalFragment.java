@@ -1,6 +1,8 @@
 package bysong.app.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,11 +10,17 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import bysong.app.R;
@@ -21,6 +29,7 @@ import bysong.app.adapter.SongsAdapter;
 import bysong.app.controller.SongLibrary;
 import bysong.app.domain.PlayerMp3;
 import bysong.app.domain.Song;
+import bysong.app.utils.AndroidUtils;
 
 /**
  * Created by Tiago on 10/08/2016.
@@ -28,11 +37,11 @@ import bysong.app.domain.Song;
 public class TopSemanalFragment extends Fragment implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
     private static final String TAG = "songplayer";
-    private RecyclerView recyclerView;
-    private List<Song> songs;
-    private PlayerMp3 playerMp3, previewMp3;
+    private static RecyclerView recyclerView;
+    private static List<Song> songs;
+    private static PlayerMp3 playerMp3, previewMp3;
 
-    private boolean isPlaying;
+    private static boolean isPlaying;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,10 +60,87 @@ public class TopSemanalFragment extends Fragment implements MediaPlayer.OnPrepar
         //songs = Song.getSongs()
         // RecyclerView
         recyclerView = (RecyclerView) view.findViewById(R.id.top10);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new SongsAdapter(getContext(), songs, onClickSongsMuisc()));
+        recyclerUp(getContext(), songs);
+        setHasOptionsMenu(true);
         return view;
+
+    }
+
+    public void recyclerUp(Context context, List<Song> songs){
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(new SongsAdapter(context, songs, onClickSongsMuisc()));
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        inflater.inflate(R.menu.menu_search, menu);
+        MenuItem item = menu.findItem(R.id.menu_search);
+        SearchView sv = new SearchView(getActivity());
+        sv.setOnQueryTextListener(new MenuListener(getActivity()));
+        //sv.setBackgroundColor(Color.WHITE);
+        item.setActionView(sv);
+        super.onCreateOptionsMenu(menu, inflater);
+
+    }
+
+    class MenuListener implements SearchView.OnQueryTextListener {
+
+        private Context context;
+
+        public MenuListener(Context context) {
+
+            this.context = context;
+
+        }
+
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+
+            Log.i("livroandroid", "onQueryTextSubmit: " + query);
+            //Toast.makeText(context, "Texto: " + query, Toast.LENGTH_SHORT).show();
+            if (songs != null) {
+
+                List<Song> songsResult = new ArrayList<Song>();
+                for (Song song : songs) {
+
+                    boolean contains = song.getArtist().getArtistName().toUpperCase().contains(query.toUpperCase());
+
+                    if (contains) {
+
+                        songsResult.add(song);
+
+                    }
+
+                }
+
+                recyclerUp(getContext(),songsResult);
+                AndroidUtils.closeVirtualKeyborad(getContext(), recyclerView);
+
+            }
+
+            return false;
+
+        }
+
+        @Override
+        public boolean onQueryTextChange(String newText) {
+
+            Log.i("livroandroid", "onQueryTextChange: " + newText);
+
+            if ("".equals(newText)) {
+
+                // Se vazio volta a lista original
+                recyclerUp(getContext(),songs);
+
+            }
+
+            return false;
+
+        }
 
     }
 
