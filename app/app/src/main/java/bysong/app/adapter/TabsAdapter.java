@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import bysong.app.R;
 import bysong.app.fragments.GeneroFragment;
 import bysong.app.fragments.LancamentosFragment;
+import bysong.app.fragments.PesquisaFragment;
 import bysong.app.fragments.PraVoceFragment;
 import bysong.app.fragments.TopSemanalFragment;
 
@@ -29,7 +30,7 @@ public class TabsAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
 
-        return 4;
+        return 5;
 
     }
 
@@ -49,9 +50,13 @@ public class TabsAdapter extends FragmentPagerAdapter {
 
             return context.getString(R.string.top_semanal);
 
+        } else if (position == 3) {
+
+            return context.getString(R.string.genero);
+
         }
 
-        return context.getString(R.string.genero);
+        return context.getString(R.string.pesquisa);
 
     }
 
@@ -72,9 +77,13 @@ public class TabsAdapter extends FragmentPagerAdapter {
 
             f = new TopSemanalFragment();
 
-        } else {
+        } else if (position == 3) {
 
             f = new GeneroFragment();
+
+        } else {
+
+            f = new PesquisaFragment();
 
         }
 
