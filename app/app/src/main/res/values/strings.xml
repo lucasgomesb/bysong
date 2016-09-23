@@ -2,6 +2,9 @@
 
     <string name="app_name">BySong</string>
     <string name="activity_ranking_name">Ranking</string>
+    <string name="activity_configuracoes_name">Configurações</string>
+    <!-- Integração com o FaceBook -->
+    <string name="facebook_app_id">1684481448470406</string>
     <!-- Tabs Songs -->
     <string name="top_100">Top 100</string>
     <string name="novas_musicas">Novas Músicas</string>

@@ -22,29 +22,32 @@ public class PlayerMp3 implements MediaPlayer.OnCompletionListener, MediaPlayer.
     // Declara um objeto MediaPlayer
     private MediaPlayer player;
     private int currentTime;
+    MediaPlayer.OnPreparedListener onPreparedListener;
 
     public PlayerMp3(Context context, MediaPlayer.OnPreparedListener onPreparedListener) {
 
-        // Cria o MediaPlayer
-        player = new MediaPlayer();
-        // Executa o listener quando terminar a música
-        player.setOnCompletionListener(this);
-        player.setOnPreparedListener(onPreparedListener);
-        player.setOnBufferingUpdateListener(this);
-        player.setOnSeekCompleteListener(this);
-
+        this.onPreparedListener = onPreparedListener;
+        this.prepareMediaPlayer();
     }
 
     public PlayerMp3(Context context, int mp3, MediaPlayer.OnPreparedListener onPreparedListener) {
 
         // Cria o MediaPlayer
         player = MediaPlayer.create(context, mp3);
+
+        this.prepareMediaPlayer();
+
+    }
+
+    private void prepareMediaPlayer() {
+        // Cria o MediaPlayer
+        player = new MediaPlayer();
+
         // Executa o listener quando terminar a música
         player.setOnCompletionListener(this);
-        player.setOnPreparedListener(onPreparedListener);
+        player.setOnPreparedListener(this.onPreparedListener);
         player.setOnBufferingUpdateListener(this);
         player.setOnSeekCompleteListener(this);
-
     }
 
     public void start(String url) {
@@ -64,6 +67,10 @@ public class PlayerMp3 implements MediaPlayer.OnCompletionListener, MediaPlayer.
     public void start(FileDescriptor asset, long offSet, long length) {
 
         try {
+            if (player.isPlaying()) {
+                this.stop();
+                this.prepareMediaPlayer();
+            }
 
             player.setDataSource(asset, offSet, length);
             player.prepareAsync();
@@ -89,12 +96,14 @@ public class PlayerMp3 implements MediaPlayer.OnCompletionListener, MediaPlayer.
             player.pause();
 
     }
+
     // Para a música e altera o status
     public void stop() {
 
-        player.stop();
-        player.release();
-        player = null;
+        if (player.isPlaying()) {
+            player.stop();
+            player.reset();
+        }
 
     }
 

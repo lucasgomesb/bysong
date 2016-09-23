@@ -3,6 +3,9 @@ package bysong.app.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
 import bysong.app.R;
 import bysong.app.fragments.SplashFragment;
 
@@ -16,6 +19,9 @@ public class SplashActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
 
         if (savedInstanceState == null) {
 

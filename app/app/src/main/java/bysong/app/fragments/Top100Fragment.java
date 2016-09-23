@@ -30,7 +30,8 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
     private static final String TAG = "songplayer";
     private RecyclerView recyclerView;
     private List<Song> songs;
-    private PlayerMp3 playerMp3, playerPreview;
+    //private PlayerMp3 playerMp3;
+    private PlayerMp3 playerPreview;
 
     private boolean isPlaying;
 
@@ -49,7 +50,7 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
         View view = inflater.inflate(R.layout.fragment_top_10, container, false);
         songs = new SongLibrary().getSongList();
         //songs = Song.getSongs();
-        playerMp3 = new PlayerMp3(getContext(), this);
+        //playerMp3 = new PlayerMp3(getContext(), this);
         playerPreview = new PlayerMp3(getContext(), this);
         // RecyclerView
         recyclerView = (RecyclerView) view.findViewById(R.id.top10);
@@ -67,7 +68,7 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
             @Override
             public void onClickPlay(SongsAdapter.SongsViewHolder holder, int id) {
 
-                playerMp3.start("https://albireo1.sscdn.co/palcomp3/c/9/e/8/bandatorpedooficial-banda-torpedo-pra-nao-morrer-de-paixao-audio-oficial-2016-9cff4a7d.mp3");
+                playerPreview.start("https://albireo1.sscdn.co/palcomp3/c/9/e/8/bandatorpedooficial-banda-torpedo-pra-nao-morrer-de-paixao-audio-oficial-2016-9cff4a7d.mp3");
                 holder.song_item_audio.setVisibility(View.GONE);
                 holder.song_item_audio_pause.setVisibility(View.VISIBLE);
 
@@ -78,13 +79,13 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
 
                 isPlaying = false;
 
-                if (playerMp3 != null) {
+              /*  if (playerMp3 != null) {
 
                     playerMp3.pause();
                     holder.song_item_audio.setVisibility(View.VISIBLE);
                     holder.song_item_audio_pause.setVisibility(View.GONE);
 
-                }
+                }*/
 
             }
 
@@ -93,9 +94,15 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
 
                 try {
 
-                   AssetFileDescriptor asset = getActivity().getAssets().openFd("pra_nao_morrer_de_paixao_refrao.mp3");
-                   playerPreview.start(asset.getFileDescriptor(), asset.getStartOffset(), asset.getLength());
-
+                    if (isPlaying) {
+                        playerPreview.stop();
+                        isPlaying = false;
+                        //holder.song_item_audio.setVisibility(View.VISIBLE);
+                        //holder.song_item_audio_pause.setVisibility(View.GONE);
+                    } else {
+                        AssetFileDescriptor asset = getActivity().getAssets().openFd("pra_nao_morrer_de_paixao_refrao.mp3");
+                        playerPreview.start(asset.getFileDescriptor(), asset.getStartOffset(), asset.getLength());
+                    }
                 } catch (IOException e) {
 
                     Log.d(TAG, e.getMessage(), e);
@@ -115,9 +122,9 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
 
         isPlaying = false;
 
-        if (playerMp3 != null) {
+        if (playerPreview != null) {
 
-            playerMp3.pause();
+            playerPreview.pause();
 
         }
 
@@ -130,9 +137,9 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
 
         isPlaying = false;
 
-        if (playerMp3 != null) {
+        if (playerPreview != null) {
 
-            playerMp3.stop();
+            playerPreview.stop();
 
         }
 
@@ -144,7 +151,7 @@ public class Top100Fragment extends Fragment implements MediaPlayer.OnPreparedLi
         Log.d(TAG, "onPrepared()");
         isPlaying = true;
         mediaPlayer.start();
-        mediaPlayer.setLooping(true);
+        //mediaPlayer.setLooping(true);
 
     }
 

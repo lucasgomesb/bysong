@@ -11,7 +11,10 @@ import android.view.MenuItem;
 
 import bysong.app.R;
 import bysong.app.adapter.TabsAdapter;
+import bysong.app.application.Application;
+import bysong.app.domain.User;
 import bysong.app.utils.PermissionUtils;
+
 
 public class MainActivity extends BaseActivity {
 
@@ -28,6 +31,8 @@ public class MainActivity extends BaseActivity {
         PermissionUtils.validate(this, 1, permissions);
         setUpViewPagerTabs();
 
+        // Para testes. Simula um usuário logado
+        Application.getInstance().setLoggedUser(new User("001", null, "Lucas", "Gomes Bittencourt", 9, 1000));
     }
 
     private void setUpViewPagerTabs() {
@@ -63,7 +68,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(this, RankingActivity.class));
                 break;
             case R.id.action_settings:
-                toast("Abre configurações");
+                startActivity(new Intent(this, ConfiguracoesActivity.class));
                 break;
 
         }

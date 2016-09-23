@@ -49,7 +49,7 @@ public class PraVoceFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_por_genero, container, false);
         songs = new SongLibrary().getSongList();
         //songs = Song.getSongs();
-        playerMp3 = new PlayerMp3(getContext(), new MediaPlayer.OnPreparedListener() {
+       /* playerMp3 = new PlayerMp3(getContext(), new MediaPlayer.OnPreparedListener() {
 
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
@@ -61,7 +61,8 @@ public class PraVoceFragment extends Fragment {
 
             }
 
-        });
+        });*/
+
         // RecyclerView
         recyclerView = (RecyclerView) view.findViewById(R.id.porGenero);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
