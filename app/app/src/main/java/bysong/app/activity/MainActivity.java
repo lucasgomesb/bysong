@@ -14,6 +14,7 @@ import bysong.app.adapter.TabsAdapter;
 import bysong.app.application.Application;
 import bysong.app.domain.User;
 import bysong.app.utils.PermissionUtils;
+import bysong.app.utils.PrefUtils;
 
 
 public class MainActivity extends BaseActivity {
@@ -38,16 +39,34 @@ public class MainActivity extends BaseActivity {
     private void setUpViewPagerTabs() {
 
         // ViewPager
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         // Mantém duas tabs a mais do que a view pager está visualizando
         viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(new TabsAdapter(this, getSupportFragmentManager()));
         // Tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         int cor = ContextCompat.getColor(this, R.color.white);
         // Cor branca no texto (o fundo azul foi definido no layout)
         tabLayout.setTabTextColors(cor, cor);
+        int tabIdx = PrefUtils.getInteger(getBaseContext(), "tabIdx");
+        viewPager.setCurrentItem(tabIdx);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            @Override
+            public void onPageSelected(int position) {
+
+                PrefUtils.setInteger(getBaseContext(), "tabIdx", viewPager.getCurrentItem());
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {}
+
+        });
 
     }
 

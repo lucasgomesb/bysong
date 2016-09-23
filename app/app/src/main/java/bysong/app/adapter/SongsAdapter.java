@@ -29,6 +29,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsViewHol
         void onClickPlay(SongsViewHolder holder, int id);
         void onClickPause(SongsViewHolder holder, int id);
         void onClickPlayPreview(SongsViewHolder holder, int id);
+        void onClickTrecho(SongsViewHolder holder, int id);
 
     }
 
@@ -90,6 +91,17 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsViewHol
 
                     onClickSongs.onClickPlayPreview(holder, position);
                     holder.changeStatusPreview();
+
+                }
+
+            });
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+                    onClickSongs.onClickTrecho(holder, position);
 
                 }
 

@@ -110,4 +110,22 @@ public class Song {
 
     }
 
+    // Método para teste
+    public static List<Song> getSongsArtist() {
+
+        List<Song> songs = new ArrayList<Song>();
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.adele_hello_art), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.meghan_trainor_no_art), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.maroon_five_sugar_art), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.john_lennon_imagine_art), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.nirvana_come_as_you_are_art), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.guns_n_roses_patience_art), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.sia_cheap_thrills_art), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.adele_hello_art), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.meghan_trainor_no_art), 0));
+        songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.maroon_five_sugar_art), 0));
+        return songs;
+
+    }
+
 }
