@@ -116,6 +116,11 @@ public class PraVoceFragment extends Fragment {
 
             }
 
+            @Override
+            public void onClickTrecho(SongsAdapter.SongsViewHolder holder, int id) {
+                
+            }
+
         };
 
     }

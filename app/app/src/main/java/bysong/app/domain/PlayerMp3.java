@@ -23,11 +23,41 @@ public class PlayerMp3 implements MediaPlayer.OnCompletionListener, MediaPlayer.
     private MediaPlayer player;
     private int currentTime;
     MediaPlayer.OnPreparedListener onPreparedListener;
+    private static PlayerMp3 playerMp3;
 
     public PlayerMp3(Context context, MediaPlayer.OnPreparedListener onPreparedListener) {
 
         this.onPreparedListener = onPreparedListener;
         this.prepareMediaPlayer();
+    }
+
+    public static synchronized PlayerMp3 getInstance(MediaPlayer.OnPreparedListener onPreparedListener,
+                                                     MediaPlayer.OnCompletionListener onCompletionListener) {
+
+        if (playerMp3 == null) {
+
+            playerMp3 = new PlayerMp3(onPreparedListener, onCompletionListener);
+
+        }
+
+        return playerMp3;
+
+    }
+
+    private PlayerMp3(MediaPlayer.OnPreparedListener onPreparedListener,
+                      MediaPlayer.OnCompletionListener onCompletionListener) {
+
+        player = new MediaPlayer();
+        player.setOnPreparedListener(onPreparedListener);
+        player.setOnCompletionListener(onCompletionListener);
+
+    }
+
+
+    public void killMyInstance() {
+
+        playerMp3 = null;
+
     }
 
     public PlayerMp3(Context context, int mp3, MediaPlayer.OnPreparedListener onPreparedListener) {

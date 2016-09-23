@@ -67,6 +67,7 @@ public class MusicaFragment extends Fragment implements MediaPlayer.OnPreparedLi
 
     }
 
+
     @Override
     public void onPrepared(MediaPlayer mediaPlayer) {
 
