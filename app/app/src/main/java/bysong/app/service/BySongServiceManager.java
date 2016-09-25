@@ -24,14 +24,12 @@ public class BySongServiceManager implements CallBackInterface {
     }
 
     private CallBackInterface responseCallBack;
-   // private Type resultType;
 
     public void getUserFriends(CallBackInterface responseCallBack) {
 
         String url = ServiceURL + ServiceNameUserFriends;
         JSONServiceManager jsonServiceManager = new JSONServiceManager();
         this.responseCallBack = responseCallBack;
-      //  this.resultType = resultType;
 
         try {
             jsonServiceManager.setCallBack(this, User[].class );
@@ -66,8 +64,8 @@ public class BySongServiceManager implements CallBackInterface {
             resultObject = usersList;
         }
         if (type == Song[].class) {
-            Song[] usersArray = loGSon.fromJson(String.valueOf(result), type);
-            List<Song> songList = Arrays.asList(usersArray);
+            Song[] songArray = loGSon.fromJson(String.valueOf(result), type);
+            List<Song> songList = Arrays.asList(songArray);
             resultObject = songList;
         }
 

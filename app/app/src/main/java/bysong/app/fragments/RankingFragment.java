@@ -43,7 +43,6 @@ public class RankingFragment extends Fragment implements CallBackInterface {
 
         BySongServiceManager bySongServiceManager = new BySongServiceManager();
         bySongServiceManager.getUserFriends(this);
-        bySongServiceManager.getSongList(this);
 
         return view;
     }
