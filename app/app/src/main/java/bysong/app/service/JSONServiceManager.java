@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -17,10 +18,12 @@ public class JSONServiceManager extends AsyncTask<String, Void, String> {
 
 
     private CallBackInterface responseCallBack;
+    private Type resultType;
 
-    public void setCallBack(CallBackInterface responseCallBack) {
+    public void setCallBack(CallBackInterface responseCallBack, Type resultType) {
 
         this.responseCallBack = responseCallBack;
+        this.resultType = resultType;
     }
 
 
@@ -60,7 +63,7 @@ public class JSONServiceManager extends AsyncTask<String, Void, String> {
 
 
     protected void onPostExecute(String result) {
-        responseCallBack.executeCallBack(result);
+        responseCallBack.executeCallBack(result, resultType);
     }
 
 }

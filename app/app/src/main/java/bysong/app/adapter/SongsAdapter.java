@@ -55,7 +55,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsViewHol
     public void onBindViewHolder(final SongsViewHolder holder, final int position) {
 
         Song song = songs.get(position);
-        holder.img_artist.setImageResource(song.getArtist().getImageFileArtist());
+        holder.img_artist.setImageResource(song.getArtist().getImageFileArtistID());
         holder.img_status.setImageResource(song.getIoSongRankStatus());
         holder.name_song_artist.setText(song.getArtist().getArtistName() + " - " + song.getTitle());
         holder.visualizacoes.setText(String.valueOf(song.getAllViewsCount()) + " visualicações");

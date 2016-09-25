@@ -6,12 +6,13 @@ package bysong.app.domain;
 public class Artist {
 
     private String artistName;
-    private int imageFileArtist;
+    private String imageFileArtist;
+    private int imageFileArtistID;
 
-    public Artist(String artistName, int imageFileArtist) {
+    public Artist(String artistName, int imageFileArtistID) {
 
         this.artistName = artistName;
-        this.imageFileArtist = imageFileArtist;
+        this.imageFileArtistID = imageFileArtistID;
 
     }
 
@@ -27,17 +28,21 @@ public class Artist {
 
     }
 
-    public void setImageFileArtist(int imageFileArtist) {
+    public void setImageFileArtist(String imageFileArtist) {
 
         this.imageFileArtist = imageFileArtist;
 
     }
 
-    public int getImageFileArtist() {
+    public String getImageFileArtist() {
 
         return imageFileArtist;
 
     }
+    public int getImageFileArtistID() {
 
+        return imageFileArtistID;
+
+    }
 }
 

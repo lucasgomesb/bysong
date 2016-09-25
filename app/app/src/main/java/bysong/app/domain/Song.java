@@ -17,14 +17,14 @@ public class Song {
     private int allViewsCount;
     public List<Verse> versesList;
     private Artist artist;
-    private int ioSongRankStatus; // Atributo ioSongRankStatus alterado de SongRankStatus para int
+    private int songRankStatus; // Atributo ioSongRankStatus alterado de SongRankStatus para int
 
     /* Obs.: Sempre que um construtor for utilizado para inicializar os atributos é preciso criar
      * um outro construtor vazio, pois nem sempre vamos inicializar os atributos ao instanciar o mesmo. */
     public Song() {}
 
     public Song(String songCode, String fileNameMp3, String title, int allViewsCount,
-                List<Verse> versesList, Artist artist, int ioSongRankStatus) {
+                List<Verse> versesList, Artist artist, int songRankStatus) {
 
         this.songCode = songCode;
         this.fileNameMp3 = fileNameMp3;
@@ -32,7 +32,7 @@ public class Song {
         this.allViewsCount = allViewsCount;
         this.versesList = versesList;
         this.artist = artist;
-        this.ioSongRankStatus = ioSongRankStatus;
+        this.songRankStatus = songRankStatus;
 
     }
 
@@ -85,11 +85,11 @@ public class Song {
     }
 
     public int getIoSongRankStatus() {
-        return ioSongRankStatus;
+        return songRankStatus;
     }
 
-    public void setIoSongRankStatus(int ioSongRankStatus) {
-        this.ioSongRankStatus = ioSongRankStatus;
+    public void setIoSongRankStatus(int songRankStatus) {
+        this.songRankStatus = songRankStatus;
     }
 
     // Método para teste

@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.lang.reflect.Type;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -42,12 +43,13 @@ public class RankingFragment extends Fragment implements CallBackInterface {
 
         BySongServiceManager bySongServiceManager = new BySongServiceManager();
         bySongServiceManager.getUserFriends(this);
+        bySongServiceManager.getSongList(this);
 
         return view;
     }
 
     @Override
-    public void executeCallBack(Object result) {
+    public void executeCallBack(Object result, Type type) {
 
         usersList = (List<User>) result;
 

@@ -52,7 +52,7 @@ public class PraVoceAdapter extends RecyclerView.Adapter<PraVoceAdapter.SongsVie
     public void onBindViewHolder(final SongsViewHolder holder, final int position) {
 
         Song song = songs.get(position);
-        holder.art_album.setImageResource(song.getArtist().getImageFileArtist());
+        holder.art_album.setImageResource(song.getArtist().getImageFileArtistID());
 
         if (onClickSongsCallback != null) {
 
