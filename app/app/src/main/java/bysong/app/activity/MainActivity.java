@@ -2,12 +2,20 @@ package bysong.app.activity;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import bysong.app.R;
 import bysong.app.adapter.TabsAdapter;
@@ -19,7 +27,7 @@ import bysong.app.utils.PrefUtils;
 
 public class MainActivity extends BaseActivity {
 
-    private String [] permissions = new String[]{
+    private String[] permissions = new String[]{
             Manifest.permission.READ_EXTERNAL_STORAGE
     };
 
@@ -32,8 +40,30 @@ public class MainActivity extends BaseActivity {
         PermissionUtils.validate(this, 1, permissions);
         setUpViewPagerTabs();
 
+        // Não remover. Serve para capturar o key hasch, em caso de mudança. Deixar comentado
+        //this.getKeyHashForFacebook();
+
         // Para testes. Simula um usuário logado
         Application.getInstance().setLoggedUser(new User("001", null, "Lucas", "Gomes Bittencourt", 9, 1000));
+    }
+
+    private void getKeyHashForFacebook() {
+
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    getPackageName(),
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }
+
     }
 
     private void setUpViewPagerTabs() {
@@ -54,7 +84,8 @@ public class MainActivity extends BaseActivity {
         viewPager.setCurrentItem(tabIdx);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
 
             @Override
             public void onPageSelected(int position) {
@@ -64,7 +95,8 @@ public class MainActivity extends BaseActivity {
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {}
+            public void onPageScrollStateChanged(int state) {
+            }
 
         });
 
@@ -87,7 +119,8 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(this, RankingActivity.class));
                 break;
             case R.id.action_settings:
-                startActivity(new Intent(this, ConfiguracoesActivity.class));
+                startActivity(new Intent(this, PreferencesActivity.class));
+//                startActivity(new Intent(this, ConfiguracoesActivity.class));
                 break;
 
         }

@@ -57,6 +57,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.UserView
         holder.ranking_position.setText(String.valueOf(user.getRankPosition()));
 
         User loggedUser = Application.getInstance().getLoggedUser();
+        int position2 = getItemCount();
 
         switch (position) {
             case 0:
@@ -74,6 +75,10 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.UserView
                 holder.img_trophy.setVisibility(View.VISIBLE);
                 holder.img_trophy.setImageResource(R.drawable.bronze_trophy);
                 holder.ranking_position.setVisibility(View.GONE);
+                break;
+            default:
+                holder.img_trophy.setVisibility(View.GONE);
+                holder.ranking_position.setVisibility(View.VISIBLE);
                 break;
         }
 

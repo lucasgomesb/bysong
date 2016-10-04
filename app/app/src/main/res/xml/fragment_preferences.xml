@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="50dp">
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="applicationUpdates"
+        android:summary="Ativar ou desativar sons de navegação"
+        android:title="Sons do aplicativo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/preferenceDifficulty"
+        android:entryValues="@array/preferenceDifficultyValues"
+        android:key="preferenceDifficulty"
+        android:summary="Definir o nível de dificuldade"
+        android:title="Nível de dificuldade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+</PreferenceScreen>

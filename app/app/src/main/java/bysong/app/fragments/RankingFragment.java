@@ -1,5 +1,6 @@
 package bysong.app.fragments;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -14,6 +15,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.facebook.AccessToken;
+import com.facebook.Profile;
 
 import java.lang.reflect.Type;
 import java.util.Collections;
@@ -33,6 +37,8 @@ public class RankingFragment extends Fragment implements CallBackInterface {
     private RecyclerView recyclerView;
     private List<User> usersList;
     private RankingAdapter adapter;
+    Profile facebookProfile;
+    AccessToken facebookAccessToken;
     View view;
 
     @Nullable
@@ -43,6 +49,17 @@ public class RankingFragment extends Fragment implements CallBackInterface {
 
         BySongServiceManager bySongServiceManager = new BySongServiceManager();
         bySongServiceManager.getUserFriends(this);
+
+        facebookAccessToken = AccessToken.getCurrentAccessToken();
+        facebookProfile = Profile.getCurrentProfile();
+
+        if (facebookProfile != null) {
+
+        }
+        else
+        {
+
+        }
 
         return view;
     }
