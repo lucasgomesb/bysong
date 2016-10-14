@@ -12,25 +12,36 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import bysong.app.R;
+import bysong.app.adapter.PesquisaAdapter;
 import bysong.app.domain.Song;
+import bysong.app.service.BySongServiceManager;
 import bysong.app.utils.AndroidUtils;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PesquisaFragment extends Fragment {
+public class PesquisaFragment extends Fragment implements CallBackInterface {
+
+    private ListView listaSongs;
+    private List<Song> songs;
+    private PesquisaAdapter adapter;
+    private View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_pesquisa, container, false);
+        view = inflater.inflate(R.layout.fragment_pesquisa, container, false);
         setHasOptionsMenu(true);
+        BySongServiceManager bySongServiceManager = new BySongServiceManager();
+        bySongServiceManager.getSongList(this);
         return view;
 
     }
@@ -45,6 +56,25 @@ public class PesquisaFragment extends Fragment {
         //sv.setBackgroundColor(Color.WHITE);
         item.setActionView(sv);
         super.onCreateOptionsMenu(menu, inflater);
+
+    }
+
+    @Override
+    public void executeCallBack(Object result, Type type) {
+
+        songs = (List<Song>) result;
+
+        for (Song song : songs) {
+
+            Log.d("songs", song.getTitle());
+
+        }
+
+        Log.d("pesquisa", "executeCallBack(): " + result);
+
+        adapter = new PesquisaAdapter(getContext(), songs);
+        listaSongs = (ListView) view.findViewById(R.id.listaMusicas);
+        listaSongs.setAdapter(adapter);
 
     }
 
