@@ -1,14 +1,8 @@
 package bysong.app.fragments;
 
-import android.app.ActionBar;
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +22,7 @@ import bysong.app.R;
 import bysong.app.adapter.RankingAdapter;
 import bysong.app.domain.User;
 import bysong.app.service.BySongServiceManager;
+import bysong.app.visualControls.SimpleDividerItemDecoration;
 
 /**
  * Created by Tiago on 17/08/2016.
@@ -86,32 +81,7 @@ public class RankingFragment extends Fragment implements CallBackInterface {
     }
 
 
-    public class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
-        private Drawable mDivider;
 
-        public SimpleDividerItemDecoration(Context context) {
-            mDivider = ContextCompat.getDrawable(context,R.drawable.line_divider);
-        }
-
-        @Override
-        public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
-            int left = 30;
-            int right = parent.getWidth() - 30;
-
-            int childCount = parent.getChildCount();
-            for (int i = 0; i < childCount; i++) {
-                View child = parent.getChildAt(i);
-
-                RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
-
-                int top = child.getBottom() + params.bottomMargin;
-                int bottom = top + mDivider.getIntrinsicHeight();
-
-                mDivider.setBounds(left, top, right, bottom);
-                mDivider.draw(c);
-            }
-        }
-    }
 
 
 }

@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
@@ -16,12 +17,19 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphRequestAsyncTask;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.facebook.login.widget.ProfilePictureView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import bysong.app.R;
 import bysong.app.fragments.PreferencesFragment;
@@ -109,18 +117,21 @@ public class PreferencesActivity extends BaseActivity {
 
             @Override
             public void onCancel() {
-                int i;
-                i = 1;
+                toast("Login cancelado");
             }
 
             @Override
             public void onError(FacebookException exception) {
-                int i;
-                i = 1;
+                String lsMessage = exception.getMessage();
+                if (lsMessage != null)
+                    toast("Falha ao tentar efetuar o login:" + lsMessage);
+                else
+                    toast("Falha ao tentar efetuar o login");
             }
         });
 
         this.setFacebookProfile();
+
 
     }
 

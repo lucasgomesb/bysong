@@ -1,120 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    app:cardElevation="3dp"
-    app:cardCornerRadius="25dp"
+    android:layout_height="70dp"
+    android:layout_marginBottom="0dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="0dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="0dp"
     app:cardPreventCornerOverlap="false"
     app:cardUseCompatPadding="false"
-    card_view:cardCornerRadius="3dp"
-    card_view:cardElevation="6dp"
-    android:foreground="?attr/selectableItemBackground">
+    card_view:cardElevation="0dp">
 
-        <!-- Layout 1 -->
+    <!-- Layout 1 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/img_artist"
+            android:layout_width="@dimen/image_view_width"
+            android:layout_height="@dimen/image_view_height"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:src="@drawable/artist_circle_adele" />
+
+        <!-- Layout 2 -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/img_artist"
-                android:layout_width="@dimen/image_view_width"
-                android:layout_height="@dimen/image_view_height"
-                android:src="@drawable/artist_circle_adele"
-                android:layout_gravity="center_vertical"
-                android:paddingLeft="5dp"/>
-
-            <!-- Layout 2 -->
+            <!-- Layout 2.1 -->
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="5dp">
+                android:layout_height="wrap_content">
 
-                <!-- Layout 2.1 -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/img_status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/song_item_status_rank_up"
-                        android:layout_gravity="center_vertical" />
-
-                    <TextView
-                        android:id="@+id/name_song_artist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Adele - Hello"
-                        android:layout_marginLeft="5dp"
-                        android:layout_gravity="center_vertical" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/visualizacoes"
+                <ImageView
+                    android:id="@+id/img_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5.000 visualizações."
                     android:layout_gravity="center_vertical"
-                    android:textSize="12sp"/>
+                    android:src="@drawable/song_item_status_rank_up" />
+
+                <TextView
+                    android:id="@+id/name_song_artist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:text="Adele - Hello" />
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/visualizacoes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="5.000 visualizações."
+                android:textSize="12sp" />
+
         </LinearLayout>
-        <!-- Layout 3 -->
+
+    </LinearLayout>
+    <!-- Layout 3 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|right"
+        android:paddingRight="5dp">
+
+        <!-- Layout 3.1 -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|right"
-            android:paddingRight="5dp">
-
-            <!-- Layout 3.1 -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginRight="5dp">
-
-                <ImageView
-                    android:id="@+id/song_item_start_1"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/song_item_start_on"
-                    android:layout_gravity="center_vertical|right"/>
-
-                <ImageView
-                    android:id="@+id/song_item_start_2"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/song_item_start_on"
-                    android:layout_gravity="center_vertical|right"/>
-
-                <ImageView
-                    android:id="@+id/song_item_start_3"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/song_item_start_on"
-                    android:layout_gravity="center_vertical|right" />
-
-
-            </LinearLayout>
+            android:layout_marginRight="5dp"
+            android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/song_item_preview"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/song_item_preview"
-                android:layout_margin="10dp"
-                android:layout_gravity="center_vertical"/>
+                android:id="@+id/song_item_start_1"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical|right"
+                android:src="@drawable/song_item_start_on" />
+
+            <ImageView
+                android:id="@+id/song_item_start_2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical|right"
+                android:src="@drawable/song_item_start_on" />
+
+            <ImageView
+                android:id="@+id/song_item_start_3"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical|right"
+                android:src="@drawable/song_item_start_on" />
+
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/song_item_preview"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:src="@drawable/song_item_preview" />
+
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>

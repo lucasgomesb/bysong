@@ -1,9 +1,7 @@
 package bysong.app.fragments;
  
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,18 +9,12 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import bysong.app.R;
@@ -31,7 +23,7 @@ import bysong.app.adapter.SongsAdapter;
 import bysong.app.controller.SongLibrary;
 import bysong.app.domain.PlayerMp3;
 import bysong.app.domain.Song;
-import bysong.app.utils.AndroidUtils;
+import bysong.app.visualControls.SimpleDividerItemDecoration;
 
 /**
  * Created by Tiago on 10/08/2016.
@@ -71,6 +63,7 @@ public class TopSemanalFragment extends Fragment implements MediaPlayer.OnPrepar
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(new SongsAdapter(getContext(), songs, onClickSongsMuisc()));
+        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
         return view;
 
     }
