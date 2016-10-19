@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.util.Log;
 
 import java.io.FileDescriptor;
@@ -18,6 +19,7 @@ public class PlayerMp3 implements MediaPlayer.OnCompletionListener, MediaPlayer.
         MediaPlayer.OnSeekCompleteListener {
 
     // Constante para ver os logs
+    Context context;
     private static final String CATEGORIA = "bysong";
     // Declara um objeto MediaPlayer
     private MediaPlayer player;
@@ -27,8 +29,13 @@ public class PlayerMp3 implements MediaPlayer.OnCompletionListener, MediaPlayer.
 
     public PlayerMp3(Context context, MediaPlayer.OnPreparedListener onPreparedListener) {
 
+        this.context = context;
         this.onPreparedListener = onPreparedListener;
         this.prepareMediaPlayer();
+    }
+
+    public PlayerMp3(Context context) {
+        this.context = context;
     }
 
     public static synchronized PlayerMp3 getInstance(MediaPlayer.OnPreparedListener onPreparedListener,
@@ -106,18 +113,40 @@ public class PlayerMp3 implements MediaPlayer.OnCompletionListener, MediaPlayer.
             player.prepareAsync();
 
         } catch (IOException e) {
-
             Log.d(CATEGORIA, e.getMessage(), e);
-
         }
-
     }
 
     public void start() {
+        player.start();
+    }
+
+    public void playLocalFile(int resourceFileID, int startTime, int duration) {
+
+        player = MediaPlayer.create(this.context, resourceFileID);
+
+        if (startTime > 0) {
+            player.seekTo(startTime);
+        }
 
         player.start();
 
+        if (startTime > 0 && duration > 0) {
+            Handler handler = new Handler();
+            handler.postDelayed(stopPlayerTask, duration);
+        }
     }
+
+    public void playLocalFile(int resourceFileID) {
+        this.playLocalFile(resourceFileID, 0, 0);
+    }
+
+    Runnable stopPlayerTask = new Runnable() {
+        @Override
+        public void run() {
+            player.pause();
+        }
+    };
 
     // Pausa a música e altera o status
     public void pause() {

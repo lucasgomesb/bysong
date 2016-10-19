@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 
 import bysong.app.R;
 import bysong.app.activity.MainActivity;
+import bysong.app.activity.PostSplashFirstAccessActivity;
 
 /**
  * Created by Tiago on 11/08/2016.
@@ -54,7 +55,7 @@ public class SplashFragment extends BaseFragment implements BaseFragment.OnExecu
     public void updateView(Object result) {
 
         getActivity().finish();
-        startActivity(new Intent(getContext(), MainActivity.class));
+        startActivity(new Intent(getContext(), PostSplashFirstAccessActivity.class));
 
     }
 

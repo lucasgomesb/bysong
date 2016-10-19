@@ -36,6 +36,14 @@
             android:name=".activity.PreferencesActivity"
             android:label="@string/activity_preferences_name"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MusicaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PostSplashFirstAccessActivity"
+            android:screenOrientation="portrait"
+            />
+
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
