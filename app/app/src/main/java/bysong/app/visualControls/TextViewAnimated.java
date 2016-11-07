@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 public class TextViewAnimated extends TextView {
 
-    private String text;
-    private int index;
-    private long delay = 500;
+    private String mText;
+    private int mIndex;
+    private long mDelay = 500;
     OnTextFinishedListener onTextFinishedListener;
 
     public interface OnTextFinishedListener {
@@ -29,52 +29,70 @@ public class TextViewAnimated extends TextView {
     }
 
     public void setDelay(long millis) {
-        delay = millis;
+        mDelay = millis;
     }
 
-    private Handler mHandler = new Handler();
+    private Handler mHandler;
+
     private Runnable characterAdder = new Runnable() {
         @Override
         public void run() {
-            setText(text.subSequence(0, index++));
-            if (index <= text.length()) {
-                mHandler.postDelayed(characterAdder, delay);
+            setText(mText.subSequence(0, mIndex++));
+            if (mIndex <= mText.length()) {
+                mHandler.postDelayed(characterAdder, mDelay);
             }
         }
     };
 
     public void showText(String text) {
-        this.text = text;
-        index = 0;
+        this.mText = text;
+        mIndex = 0;
 
         setText("");
         mHandler.removeCallbacks(wordAdder);
-        mHandler.postDelayed(wordAdder, delay);
+        mHandler.postDelayed(wordAdder, mDelay);
     }
 
     public void showTextWordByWord(String text, OnTextFinishedListener onTextFinishedListener) {
-        this.text = text;
+        this.mText = text;
         this.onTextFinishedListener = onTextFinishedListener;
 
-        index = 0;
+        mIndex = 0;
+
         setText("");
+
+        mHandler = new Handler();
         mHandler.removeCallbacks(wordAdder);
-        mHandler.postDelayed(wordAdder, delay);
+        mHandler.postDelayed(wordAdder, mDelay);
     }
 
-    private Runnable wordAdder = new Runnable() {
+    private Word mwords[];
+
+    public void showTextWordByWord(Word words[], OnTextFinishedListener onTextFinishedListener) {
+        this.mwords = words;
+        this.onTextFinishedListener = onTextFinishedListener;
+        mIndex = 0;
+
+        setText("");
+        mHandler = new Handler();
+        mHandler.removeCallbacks(wordAdder2);
+        mHandler.postDelayed(wordAdder2, mDelay);
+    }
+
+    private Runnable wordAdder2 = new Runnable() {
         private String actualText;
 
         @Override
         public void run() {
 
-            if (index == getWordsCount(text)) {
+            if (mIndex == mwords.length) {
                 setText(actualText);
+                actualText = "";
                 onTextFinishedListener.onTextFinished();
                 return;
             }
 
-            String newWord = text.split(" ")[index];
+            String newWord = mwords[mIndex].text;
             int startWordPosition;
             int endWordPosition;
 
@@ -95,8 +113,48 @@ public class TextViewAnimated extends TextView {
 
             setText(formattedString);
 
-            index++;
-            mHandler.postDelayed(wordAdder, delay);
+
+            mHandler.postDelayed(wordAdder2, mwords[mIndex].duration);
+            mIndex++;
+        }
+    };
+
+    private Runnable wordAdder = new Runnable() {
+        private String actualText;
+
+        @Override
+        public void run() {
+
+            if (mIndex == getWordsCount(mText)) {
+                setText(actualText);
+                actualText = "";
+                onTextFinishedListener.onTextFinished();
+                return;
+            }
+
+            String newWord = mText.split(" ")[mIndex];
+            int startWordPosition;
+            int endWordPosition;
+
+            if (actualText == null) {
+                actualText = newWord;
+                startWordPosition = 0;
+                endWordPosition = newWord.length();
+            } else {
+                actualText += " ";
+                startWordPosition = actualText.length();
+                endWordPosition = startWordPosition + newWord.length();
+                actualText = actualText + newWord;
+            }
+
+            SpannableString formattedString = new SpannableString(actualText);
+            formattedString.setSpan(new RelativeSizeSpan(1.5f), startWordPosition, endWordPosition, 0);
+            formattedString.setSpan(new ForegroundColorSpan(Color.RED), startWordPosition, endWordPosition, 0);
+
+            setText(formattedString);
+
+            mIndex++;
+            mHandler.postDelayed(wordAdder, mDelay);
 
         }
     };
@@ -104,5 +162,6 @@ public class TextViewAnimated extends TextView {
     private int getWordsCount(String text) {
         return text.split(" ").length;
     }
+
 
 }

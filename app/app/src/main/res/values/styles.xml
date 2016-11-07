@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Tema base. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -19,9 +19,35 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
     <!-- Temas para a Toolbar, ver include_toolbar.xml -->
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="CustomDialogTheme" parent="@android:style/Animation.Dialog">
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="CustomDialogTest" parent="@android:style/Theme.Dialog"  >
+        <item name="android:windowAnimationStyle">@style/CustomDialogAnimation</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="CustomDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/dialog_open_animation</item>
+    </style>
 
     <!-- Estilos de fonte -->
     <style name="font_26_bold">
@@ -33,5 +59,17 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <style name="radioButton">
+        <item name="android:background">@drawable/teste</item>
+        <item name="android:textColor">#595959</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:buttonTint" tools:targetApi="lollipop">#8b8b8b</item>
+    </style>
+
+
 
 </resources>

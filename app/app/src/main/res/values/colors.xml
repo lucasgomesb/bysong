@@ -11,6 +11,9 @@
     <color name="facebookBlue">#3b5998</color>
     <color name="facebookWhite">#FFFFFF</color>
 
+    <!-- Jogo -->
+    <color name="correctAnswerGreenBackground">#c2ffd2</color>
+    <color name="correctAnswerGreenText">#167e41</color>
 
 
 

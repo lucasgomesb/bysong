@@ -2,6 +2,7 @@ package bysong.app.fragments;
 
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
+import android.widget.Toast;
 
 
 /**
@@ -16,6 +17,13 @@ public class BaseFragment extends Fragment {
 
         void execute(Object parameters);
         void updateView(Object result);
+
+    }
+
+    // Toast
+    protected void toast(String message) {
+
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -62,6 +70,8 @@ public class BaseFragment extends Fragment {
             onExecuteTask.updateView(result);
 
         }
+
+
 
     }
 

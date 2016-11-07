@@ -1,34 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="0dp"
+    android:layout_margin="0dp"
+    android:id="@+id/llMainRelativeLayout">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/llMainLayout"
+        android:id="@+id/llMainLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
         android:background="@drawable/background_post_splash_first_access"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_margin="0dp">
 
         <bysong.app.visualControls.TextViewAnimated
             android:id="@+id/tvSongVerse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="20dp"
-            android:text="I wanna love you"
+            android:text="Marry that girl, marry her anyway"
             android:textAlignment="center"
             android:textColor="#333333"
-            android:textSize="21pt" />
+            android:textSize="18pt" />
+
 
         <LinearLayout
             android:id="@+id/llTutorialVerse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
+            <ImageView
+                android:id="@+id/replay_verse"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:src="@drawable/replay" />
             <TextView
+                android:id="@+id/tvVerseInstruction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -38,6 +49,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvVerseQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -49,61 +61,53 @@
                 android:id="@+id/rgWords"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textColorHighlight="#DDDDDD"
-                android:backgroundTint="#888888"
-                android:textColor="#ae3535"
-                android:textColorLink="#a7333333"
-
-                >
+                android:gravity="center"
+                android:paddingTop="10dp">
 
                 <RadioButton
-                    android:id="@+id/rb25"
-                    android:layout_width="240dp"
-                    android:textColorHighlight="#DDDDDD"
-                    android:backgroundTint="#888888"
-                    android:textColor="#ae3535"
-                    android:textColorLink="#a7333333"
+                    android:id="@+id/rbOption1"
+                    style="@style/radioButton"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="cantar com" />
 
                 <RadioButton
-                    android:id="@+id/rb50"
-                    android:layout_width="240dp"
-                    android:layout_height="wrap_content"
-                    android:text="amar" />
-
-                <RadioButton
-                    android:id="@+id/rb75"
+                    android:id="@+id/rbOption2"
+                    style="@style/radioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="amar" />
+
+
+                <RadioButton
+                    android:id="@+id/rbOption3"
+                    style="@style/radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="levar" />
 
                 <RadioButton
-                    android:id="@+id/rb7"
+                    android:id="@+id/rbOption4"
+                    style="@style/radioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="ver" />
+
             </RadioGroup>
 
 
-
-            <Button
-                android:id="@+id/btSendAnswer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ENVIAR"
-                android:layout_marginTop="10dp"
-                android:background="#d1d1d1"
-                android:textColor="#939393"
-                android:layout_gravity="center" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:layout_margin="10dp"
         android:background="@drawable/button_skip_tutorial_background"
         android:orientation="horizontal"
@@ -118,6 +122,25 @@
             android:text="Pular tutorial"
             android:textColor="@color/white" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btSendAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#d1d1d1"
+            android:text="ENVIAR"
+            android:textColor="#939393" />
     </LinearLayout>
 </RelativeLayout>
 

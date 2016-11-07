@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import bysong.app.R;
@@ -26,6 +27,7 @@ public class SplashFragment extends BaseFragment implements BaseFragment.OnExecu
 
         View view = inflater.inflate(R.layout.fragment_splash_screen, container, false);
         mProgress = (ProgressBar) view.findViewById(R.id.splash_screen_progress_bar);
+
 
         executeTask(this);
         return view;
