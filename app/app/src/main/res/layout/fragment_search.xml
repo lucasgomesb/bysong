@@ -10,22 +10,24 @@
         android:padding="0dp">
 
         <EditText
-            android:id="@+id/calc_txt_Prise"
+            android:id="@+id/edtSearchText"
             android:layout_width="fill_parent"
             android:layout_height="60dp"
-            android:background="#ffffff"
-            android:hint="Buscar músicas"
+            android:background="@color/windowBackground"
+            android:hint="@string/editTextSearchHint"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
             android:maxLines="1"
             android:padding="20dp"
             android:textColor="#737373"
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/calc_clear_txt_Prise"
+            android:id="@+id/btClearSearchText"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_gravity="end|center_vertical"
-            android:layout_marginRight="20dp"
+            android:paddingRight="30dp"
             android:background="@null"
             android:text="X"
             android:textAlignment="viewEnd"
@@ -37,7 +39,6 @@
     <ListView
         android:id="@+id/listaMusicas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

@@ -92,8 +92,8 @@ public class Song {
         this.songRankStatus = songRankStatus;
     }
 
-    // Método para teste
-    public static List<Song> getSongs() {
+    // Método para radiobutton_background
+   /* public static List<Song> getSongs() {
 
         List<Song> songs = new ArrayList<Song>();
         songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.artist_circle_adele), 0));
@@ -110,7 +110,7 @@ public class Song {
 
     }
 
-    // Método para teste
+    // Método para radiobutton_background
     public static List<Song> getSongsArtist() {
 
         List<Song> songs = new ArrayList<Song>();
@@ -126,6 +126,6 @@ public class Song {
         songs.add(new Song("", "", "Hello", 0, null, new Artist("Adele", R.drawable.maroon_five_sugar_art), 0));
         return songs;
 
-    }
+    }*/
 
 }

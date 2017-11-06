@@ -52,7 +52,7 @@ public class ForYouAdapter extends RecyclerView.Adapter<ForYouAdapter.SongsViewH
     public void onBindViewHolder(final SongsViewHolder holder, final int position) {
 
         Song song = songs.get(position);
-        holder.art_album.setImageResource(song.getArtist().getImageFileArtistID());
+        holder.art_album.setImageResource(context.getResources().getIdentifier(song.getArtist().getImageFileArtist(), "drawable", "bysong.app"));
         holder.song_title.setText(song.getTitle());
         holder.song_artist_name.setText(song.getArtist().getArtistName());
         holder.song_views_count.setText(String.valueOf(song.getAllViewsCount()) + " visualizações");

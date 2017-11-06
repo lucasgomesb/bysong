@@ -40,7 +40,7 @@ public class SplashFragment extends BaseFragment implements BaseFragment.OnExecu
         try {
 
             for (int progress=0; progress<100; progress+=1) {
-                Thread.sleep(30);
+                Thread.sleep(20);
                 mProgress.setProgress(progress);
             }
         } catch (InterruptedException e) {
@@ -58,6 +58,7 @@ public class SplashFragment extends BaseFragment implements BaseFragment.OnExecu
 
         getActivity().finish();
         startActivity(new Intent(getContext(), PostSplashFirstAccessActivity.class));
+      //  startActivity(new Intent(getContext(), MainActivity.class));
 
     }
 

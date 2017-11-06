@@ -10,7 +10,7 @@
         android:icon="@mipmap/icone_mobile"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme">
 
         <activity
             android:name=".activity.SplashActivity"
@@ -30,22 +30,38 @@
             android:label="@string/activity_ranking_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ConfiguracoesActivity"
-            android:label="@string/activity_configuracoes_name"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activity.PreferencesActivity"
             android:label="@string/activity_preferences_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.MusicaActivity"
+            android:name=".activity.MusicActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.PostSplashFirstAccessActivity"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait" />
 
+        <activity android:name=".activity.notification.NotificationView"
+            android:label="Details of notification"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity"/>
+        </activity>
 
+        <service
+            android:name=".service.MyFireBaseService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:name=".service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />

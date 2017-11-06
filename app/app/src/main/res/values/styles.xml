@@ -9,7 +9,10 @@
         <!-- Cor de acentuação para as views (Checkbox, TextView, etc) -->
         <item name="colorAccent">@color/colorAccent</item>
         <item name="textAllCaps">false</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="android:scrollViewStyle">@style/globalScrollView</item>
     </style>
+
 
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <!-- Remove a ActionBar -->
@@ -38,7 +41,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="CustomDialogTest" parent="@android:style/Theme.Dialog"  >
+    <style name="CustomDialogTest" parent="@android:style/Theme.Dialog">
         <item name="android:windowAnimationStyle">@style/CustomDialogAnimation</item>
         <item name="android:windowBackground">@null</item>
         <item name="android:windowFrame">@null</item>
@@ -61,7 +64,7 @@
     </style>
 
     <style name="radioButton">
-        <item name="android:background">@drawable/teste</item>
+        <item name="android:background">@drawable/radiobutton_background</item>
         <item name="android:textColor">#595959</item>
         <item name="android:paddingRight">10dp</item>
         <item name="android:paddingTop">10dp</item>
@@ -69,7 +72,43 @@
         <item name="android:layout_margin">5dp</item>
         <item name="android:buttonTint" tools:targetApi="lollipop">#8b8b8b</item>
     </style>
+    <!-- Compartilhado -->
+    <style name="song_artist_image">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
 
+    <!-- Área Para você -->
+    <style name="forYouGroup">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/forYouGroupText</item>
+    </style>
 
+    <style name="forYouHorizontalSongList">
+        <item name="android:overScrollMode">never</item>
+    </style>
+
+    <style name="forYouGroupLayout">
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">15dp</item>
+    </style>
+
+    <!-- Tela de login -->
+    <style name="editTextLogin">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:background">@drawable/edittext_login_background</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:layout_height">50dp</item>
+
+    </style>
+
+    <!-- Globais -->
+    <style name="globalScrollView" parent="android:Widget.ScrollView">
+        <item name="android:scrollbars">none</item>
+    </style>
 
 </resources>

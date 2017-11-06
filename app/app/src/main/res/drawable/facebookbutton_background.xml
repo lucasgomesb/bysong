@@ -1,20 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Sombra -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#CABBBBBB"/>
+            <solid android:color="#CABBBBBB" />
             <corners android:radius="2dp" />
         </shape>
     </item>
 
-    <item
-        android:left="0dp"
-        android:right="2dp"
-        android:top="0dp"
-        android:bottom="2dp">
+
+    <item>
+
         <shape android:shape="rectangle">
-            <solid android:color="#ebefff"/>
-            <corners android:radius="2dp" />
+
+            <gradient
+                android:angle="270"
+                android:centerColor="@color/facebookBlue"
+                android:endColor="@color/facebookBlue"
+                android:startColor="@color/facebookBlue"
+                android:type="linear"></gradient>
+
         </shape>
     </item>
+
+    <!--<item-->
+    <!--android:bottom="2dp"-->
+    <!--android:left="0dp"-->
+    <!--android:right="2dp"-->
+    <!--android:top="0dp">-->
+
+    <!--<shape android:shape="rectangle">-->
+
+    <!--<corners android:radius="2dp" />-->
+
+    <!--<gradient-->
+    <!--android:angle="270"-->
+    <!--android:centerColor="@color/facebookBlue"-->
+    <!--android:endColor="@color/facebookBlue"-->
+    <!--android:startColor="#7b90ba"-->
+    <!--android:type="linear"></gradient>-->
+
+    <!--</shape>-->
+    <!--</item>-->
+
 </layer-list>

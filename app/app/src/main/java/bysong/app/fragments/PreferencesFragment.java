@@ -1,5 +1,6 @@
 package bysong.app.fragments;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -26,10 +27,12 @@ import bysong.app.activity.PreferencesActivity;
  * Created by Tiago on 17/08/2016.
  */
 public class PreferencesFragment extends PreferenceFragment {
+
     public static final String KEY_PREFERENCE_DIFFICULTY = "preferenceDifficulty";
     public static final String PREFERENCE_DIFFICULTY_VALUE_EASY = "1";
     public static final String PREFERENCE_DIFFICULTY_VALUE_MEDIUM = "2";
     public static final String PREFERENCE_DIFFICULTY_VALUE_HARD = "3";
+
 
     ListPreference lpPreferenceDifficulty;
 
@@ -38,19 +41,17 @@ public class PreferencesFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.fragment_preferences);
 
+
         this.initializePreferences();
     }
 
-
-    private void initializePreferences()
-    {
+    private void initializePreferences() {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String preferenceDifficulty = sharedPref.getString(PreferencesFragment.KEY_PREFERENCE_DIFFICULTY, "");
         String preferenceDifficultySummary;
 
-        switch (preferenceDifficulty)
-        {
+        switch (preferenceDifficulty) {
             case PREFERENCE_DIFFICULTY_VALUE_EASY:
                 preferenceDifficultySummary = "Definir o nível de dificuldade. Atual: Iniciante";
                 break;
@@ -78,8 +79,6 @@ public class PreferencesFragment extends PreferenceFragment {
         });
 */
     }
-
-
 
 
 }

@@ -45,7 +45,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsViewHol
     @Override
     public SongsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.linha_lista_song, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.row_list_song, parent, false);
         SongsViewHolder holder = new SongsViewHolder(view);
         return holder;
 
@@ -55,10 +55,10 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsViewHol
     public void onBindViewHolder(final SongsViewHolder holder, final int position) {
 
         Song song = songs.get(position);
-        holder.img_artist.setImageResource(song.getArtist().getImageFileArtistID());
+        holder.img_artist.setImageResource(context.getResources().getIdentifier(song.getArtist().getImageFileArtist(), "drawable", "bysong.app"));
         holder.img_status.setImageResource(song.getIoSongRankStatus());
         holder.name_song_artist.setText(song.getArtist().getArtistName() + " - " + song.getTitle());
-        holder.visualizacoes.setText(String.valueOf(song.getAllViewsCount()) + " visualicações");
+        holder.visualizacoes.setText(String.valueOf(song.getAllViewsCount()) + " visualizações");
 
         if (onClickSongs != null) {
 
@@ -131,7 +131,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsViewHol
             name_song_artist = (TextView) itemView.findViewById(R.id.name_song_artist);
             img_status = (ImageView) itemView.findViewById(R.id.img_status);
             preview = (ImageView) itemView.findViewById(R.id.song_item_preview);
-            visualizacoes = (TextView) itemView.findViewById(R.id.visualizacoes);
+            visualizacoes = (TextView) itemView.findViewById(R.id.song_views_count);
         }
 
         public void changeStatusPreview()

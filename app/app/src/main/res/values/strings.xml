@@ -6,14 +6,22 @@
     <string name="activity_preferences_name">Configurações</string>
     <!-- Integração com o FaceBook -->
     <string name="facebook_app_id">1684481448470406</string>
+    <string name="com_facebook_loginview_log_in_button_long">Login com o Facebook</string>
     <!-- Tabs Songs -->
-    <string name="top_semanal">Top Semanal</string>
-    <string name="lancamento">Lançamento</string>
-    <string name="pra_voce">Pra Você</string>
-    <string name="seus_amigos">Seus amigos estão ouvindo</string>
-    <string name="ultimas">Últimas tocadas</string>
+    <string name="tabTopWeek">Top Semanal</string>
+    <string name="tabNews">Lançamento</string>
+    <string name="tabForYou">Pra você</string>
+    <string name="tabSearch">Pesquisar</string>
+    <string name="tabGenre">Gênero</string>
+    <string name="forYouGroupTextForYou">SELECIONADAS PRA VOCÊ</string>
+    <string name="forYouGroupTextYourFriends">SEUS AMIGOS OUVEM</string>
+    <string name="forYouGroupTextYourLastSongs">ÚLTIMAS CANÇÕES</string>
     <string name="genero">Gênero</string>
     <string name="pesquisa">Pesquisa</string>
+    <!-- Tab Search-->
+    <string name="editTextSearchHint">Buscar músicas</string>
+
+
     <!-- Mensagem Splash Screen -->
     <string name="agurade">Aguarde...</string>
     <!-- Itens de menu -->

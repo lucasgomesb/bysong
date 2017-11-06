@@ -36,7 +36,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.UserView
     @Override
     public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.linha_lista_ranking, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.row_list_ranking, parent, false);
         //  view.setBackgroundColor(Color.parseColor("#123456"));
         UserViewHolder holder = new UserViewHolder(view);
 

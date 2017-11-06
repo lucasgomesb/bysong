@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
+import android.view.Window;
 
 import bysong.app.R;
+import bysong.app.fragments.LoginFragment;
 import bysong.app.fragments.RankingFragment;
 
 /**
@@ -18,29 +20,16 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ranking);
-        setUpToolbar();
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().hide();
+        setContentView(R.layout.activity_login);
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().add(R.id.ranking_root, new RankingFragment()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.frame_login, new LoginFragment()).commit();
         }
+
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-    }
 
 }

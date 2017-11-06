@@ -6,11 +6,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import bysong.app.R;
-import bysong.app.fragments.GeneroFragment;
-import bysong.app.fragments.LancamentosFragment;
-import bysong.app.fragments.PesquisaFragment;
-import bysong.app.fragments.PraVoceFragment;
-import bysong.app.fragments.TopSemanalFragment;
+import bysong.app.fragments.GenreFragment;
+import bysong.app.fragments.NewsFragment;
+import bysong.app.fragments.SearchFragment;
+import bysong.app.fragments.ForYouFragment;
+import bysong.app.fragments.TopWeekFragment;
 
 /**
  * Created by Tiago on 10/08/2016.
@@ -40,23 +40,24 @@ public class TabsAdapter extends FragmentPagerAdapter {
 
         if (position == 0) {
 
-            return context.getString(R.string.pra_voce);
+            return context.getString(R.string.tabForYou);
 
         } else if (position == 1) {
 
-            return context.getString(R.string.lancamento);
+            return context.getString(R.string.tabNews);
 
         } else if (position == 2) {
 
-            return context.getString(R.string.top_semanal);
+            return context.getString(R.string.tabTopWeek);
 
         } else if (position == 3) {
 
-            return context.getString(R.string.genero);
+            return context.getString(R.string.tabGenre);
 
         }
-
-        return context.getString(R.string.pesquisa);
+        else {
+            return context.getString(R.string.tabSearch);
+        }
 
     }
 
@@ -67,23 +68,23 @@ public class TabsAdapter extends FragmentPagerAdapter {
 
         if (position == 0) {
 
-            f = new PraVoceFragment();
+            f = new ForYouFragment();
 
         } else if (position == 1) {
 
-            f = new LancamentosFragment();
+            f = new NewsFragment();
 
         } else if (position == 2){
 
-            f = new TopSemanalFragment();
+            f = new TopWeekFragment();
 
         } else if (position == 3) {
 
-            f = new GeneroFragment();
+            f = new GenreFragment();
 
         } else {
 
-            f = new PesquisaFragment();
+            f = new SearchFragment();
 
         }
 

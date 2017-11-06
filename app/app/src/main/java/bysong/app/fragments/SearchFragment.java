@@ -12,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,7 +21,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import bysong.app.R;
-import bysong.app.adapter.PesquisaAdapter;
+import bysong.app.adapter.SearchAdapter;
 import bysong.app.domain.Song;
 import bysong.app.service.BySongServiceManager;
 
@@ -30,20 +32,38 @@ public class SearchFragment extends Fragment implements CallBackInterface {
 
     private ListView listaSongs;
     private List<Song> songs;
-    private PesquisaAdapter adapter;
+    private SearchAdapter adapter;
     private View view;
+    private EditText medtSearchText;
+    private Button mbtClearSearchText;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_search, container, false);
         setHasOptionsMenu(true);
+
+        medtSearchText = (EditText) view.findViewById(R.id.edtSearchText);
+
+        mbtClearSearchText = (Button) view.findViewById(R.id.btClearSearchText);
+        mbtClearSearchText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearSearchText();
+            }
+        });
+
         BySongServiceManager bySongServiceManager = new BySongServiceManager();
         bySongServiceManager.getSongList(this);
         return view;
 
     }
 
+    private void clearSearchText()
+    {
+        medtSearchText.setText("");
+    }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
@@ -70,7 +90,7 @@ public class SearchFragment extends Fragment implements CallBackInterface {
 
         Log.d("pesquisa", "executeCallBack(): " + result);
 
-        adapter = new PesquisaAdapter(getContext(), songs);
+        adapter = new SearchAdapter(getContext(), songs);
         listaSongs = (ListView) view.findViewById(R.id.listaMusicas);
         listaSongs.setAdapter(adapter);
 

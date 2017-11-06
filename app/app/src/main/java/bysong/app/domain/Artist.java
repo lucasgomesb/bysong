@@ -7,15 +7,20 @@ public class Artist {
 
     private String artistName;
     private String imageFileArtist;
-    private int imageFileArtistID;
+    //private int imageFileArtistID;
 
-    public Artist(String artistName, int imageFileArtistID) {
+   /* public Artist(String artistName, int imageFileArtistID) {
 
         this.artistName = artistName;
         this.imageFileArtistID = imageFileArtistID;
 
-    }
+    }*/
+    public Artist(String artistName, String imageFileArtist) {
 
+        this.artistName = artistName;
+        this.imageFileArtist = imageFileArtist;
+
+    }
     public void setArtistName(String artistName) {
 
         this.artistName = artistName;
@@ -39,10 +44,10 @@ public class Artist {
         return imageFileArtist;
 
     }
-    public int getImageFileArtistID() {
+   /* public int getImageFileArtistID() {
 
         return imageFileArtistID;
 
-    }
+    }*/
 }
 

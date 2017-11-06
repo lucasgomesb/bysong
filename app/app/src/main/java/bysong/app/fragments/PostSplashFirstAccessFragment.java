@@ -19,7 +19,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import bysong.app.R;
+import bysong.app.activity.LoginActivity;
 import bysong.app.activity.MainActivity;
+import bysong.app.activity.PreferencesActivity;
 import bysong.app.domain.PlayerMp3;
 import bysong.app.visualControls.PopupWindowAnswerResult;
 import bysong.app.visualControls.TextViewAnimated;
@@ -75,7 +77,7 @@ public class PostSplashFirstAccessFragment extends BaseFragment implements TextV
         mReplayVerse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                playActualVerse();
+                replayActualVerse();
             }
         });
 
@@ -213,9 +215,25 @@ public class PostSplashFirstAccessFragment extends BaseFragment implements TextV
         this.playActualVerse();
     }
 
-    private void playActualVerse() {
+    private void playNextVerse() {
+        mActualVerseIndex++;
+        this.playActualVerse();
+    }
 
-        mllTutorialVerse.setVisibility(View.INVISIBLE);
+
+    private void playActualVerse() {
+        this.playActualVerse(false);
+    }
+    private void replayActualVerse() {
+        this.playActualVerse(true);
+    }
+
+    private void playActualVerse(boolean isReplay) {
+
+        if (isReplay == false)
+        {
+            mllTutorialVerse.setVisibility(View.INVISIBLE);
+        }
 
         if (mActualVerseIndex == mVerseCount) {
             this.openMainActivity();
@@ -224,10 +242,7 @@ public class PostSplashFirstAccessFragment extends BaseFragment implements TextV
 
         Verse verseTutorial = mVerseTutorialArray[mActualVerseIndex];
 
-
-
-        switch (verseTutorial.questionType)
-        {
+        switch (verseTutorial.questionType) {
             case QUESTION_TYPE_AUDIO_TO_SELECT:
                 mtvVerseInstruction.setText("Selecione o trecho que falta:");
                 mtvVerseQuestion.setText("");
@@ -275,7 +290,8 @@ public class PostSplashFirstAccessFragment extends BaseFragment implements TextV
     }
 
     private void openMainActivity() {
-        startActivity(new Intent(getContext(), MainActivity.class));
+        //startActivity(new Intent(getContext(), MainActivity.class));
+        startActivity(new Intent(getContext(), LoginActivity.class));
     }
 
     private void sendAnswer() {
@@ -288,8 +304,7 @@ public class PostSplashFirstAccessFragment extends BaseFragment implements TextV
         popupWindowAnswerResult.setOnDismissListener(new PopupWindowAnswerResult.OnDismissListener() {
             @Override
             public void onDismiss() {
-                mActualVerseIndex++;
-                playActualVerse();
+                playNextVerse();
             }
         });
 

@@ -11,6 +11,7 @@
     android:orientation="vertical"
     app:cardCornerRadius="5dp"
     app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/windowBackground"
     app:cardPreventCornerOverlap="false"
     app:cardUseCompatPadding="false"
     card_view:cardElevation="0dp">

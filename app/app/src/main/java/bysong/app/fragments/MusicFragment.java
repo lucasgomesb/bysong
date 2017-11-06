@@ -33,7 +33,7 @@ public class MusicFragment extends Fragment implements MediaPlayer.OnPreparedLis
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_musica, container, false);
+        View view = inflater.inflate(R.layout.fragment_music, container, false);
         letra = (TextView) view.findViewById(R.id.letra);
         btn_tocar_musica = (Button) view.findViewById(R.id.btn_tocar_trecho_musica);
         btn_tocar_musica.setOnClickListener(onClickTocar());

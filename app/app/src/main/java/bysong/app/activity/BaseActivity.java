@@ -20,10 +20,10 @@ public class BaseActivity extends AppCompatActivity {
     protected void setUpToolbar() {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         if (toolbar != null) {
-
-            setSupportActionBar(toolbar);
+            if (getSupportActionBar() == null) {
+                setSupportActionBar(toolbar);
+            }
 
         }
 

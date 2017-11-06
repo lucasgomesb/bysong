@@ -1,44 +1,174 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:layout_margin="0dp"
-        android:padding="0dp">
 
-        <EditText
-            android:id="@+id/edtSearchText"
-            android:layout_width="fill_parent"
-            android:layout_height="60dp"
-            android:background="@color/windowBackground"
-            android:hint="@string/editTextSearchHint"
-            android:imeOptions="actionSearch"
-            android:inputType="text"
-            android:maxLines="1"
-            android:padding="20dp"
-            android:textColor="#737373"
-            android:textSize="18sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/logo_com_nome" />
+
+        <bysong.app.visualControls.FacebookLoginButton
+            android:id="@+id/btFacebookLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/facebookbutton_background"
+            android:foregroundGravity="center"
+
+            android:textAlignment="center">
+
+
+
+
+            <Button
+                android:id="@+id/btnAccess"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Fazer login com o Facebook"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_vertical"
+                android:padding="10dp"
+                android:src="@drawable/facebook_white" />
+
+
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="1dp"
+                android:background="#808080" />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:text="Ou"
+                android:textAlignment="center" />
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="1dp"
+                android:background="#808080" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Fazer login com seu e-mail:"
+            android:textAlignment="center" />
+        <!-- Email Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            app:hintEnabled="false">
+
+            <EditText
+                android:id="@+id/edtEmail"
+                style="@style/editTextLogin"
+                android:layout_width="match_parent"
+                android:hint="E-mail"
+                android:inputType="textEmailAddress"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical" />
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Password Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+
+            app:hintEnabled="false">
+
+            <EditText
+                android:id="@+id/edtPassword"
+                style="@style/editTextLogin"
+                android:layout_width="match_parent"
+                android:background="@drawable/edittext_login_background"
+                android:hint="Senha"
+                android:inputType="textPassword"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btLoginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorAccent"
+            android:text="Entrar com e-mail"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/link_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="22dp"
+                android:text="Criar minha conta"
+                android:textColor="#5f46a1"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/link_signusp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="22dp"
+                android:gravity="end"
+                android:text="Esqueci minha senha"
+                android:textColor="#5f46a1"
+                android:textSize="14dp" />
+        </LinearLayout>
 
         <Button
-            android:id="@+id/btClearSearchText"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_gravity="end|center_vertical"
-            android:paddingRight="30dp"
-            android:background="@null"
-            android:text="X"
-            android:textAlignment="viewEnd"
-            android:textColor="#a4a4a4"
-            android:textSize="16sp" />
+            android:id="@+id/btDontRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:text="Não quero me cadastrar"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</ScrollView>
 
-    </FrameLayout>
-
-    <ListView
-        android:id="@+id/listaMusicas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-</LinearLayout>

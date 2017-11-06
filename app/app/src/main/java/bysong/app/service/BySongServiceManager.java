@@ -17,6 +17,7 @@ public class BySongServiceManager implements CallBackInterface {
 
     private static final String ServiceNameUserFriends = "User/Friends";
     private static final String ServiceNameSongList = "Song/All";
+    private static final String ServiceNameUserAuthenticate = "User/Authenticate?email={email}&password={password}";
     private static final String ServiceURL = "http://bysong.com.br/BySongService/ServiceRESTFul.svc/";
 
     public BySongServiceManager() {
@@ -53,6 +54,22 @@ public class BySongServiceManager implements CallBackInterface {
         }
     }
 
+    public void authenticateUser(CallBackInterface responseCallBack, String email, String password) {
+
+        String url = ServiceURL + ServiceNameUserAuthenticate;
+        url = url.replace("{email}", email);
+        url = url.replace("{password}", password);
+        JSONServiceManager jsonServiceManager = new JSONServiceManager();
+        this.responseCallBack = responseCallBack;
+
+        try {
+            jsonServiceManager.setCallBack(this, boolean.class);
+            jsonServiceManager.execute(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void executeCallBack(Object result, Type type) {
 
@@ -63,10 +80,13 @@ public class BySongServiceManager implements CallBackInterface {
             List<User> usersList = Arrays.asList(usersArray);
             resultObject = usersList;
         }
-        if (type == Song[].class) {
+        else if (type == Song[].class) {
             Song[] songArray = loGSon.fromJson(String.valueOf(result), type);
             List<Song> songList = Arrays.asList(songArray);
             resultObject = songList;
+        }
+        else {
+            resultObject = result;
         }
 
         responseCallBack.executeCallBack(resultObject, type);

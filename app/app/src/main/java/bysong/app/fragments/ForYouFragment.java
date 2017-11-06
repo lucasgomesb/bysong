@@ -16,7 +16,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import bysong.app.R;
-import bysong.app.adapter.PraVoceAdapter;
+import bysong.app.adapter.ForYouAdapter;
 import bysong.app.controller.SongLibrary;
 import bysong.app.domain.PlayerMp3;
 import bysong.app.domain.Song;
@@ -61,7 +61,7 @@ public class ForYouFragment extends Fragment implements MediaPlayer.OnPreparedLi
         recycler_pra_voce = (RecyclerView) view.findViewById(R.id.recycler_pra_voce);
         recycler_pra_voce.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false));
         recycler_pra_voce.setItemAnimator(new DefaultItemAnimator());
-        recycler_pra_voce.setAdapter(new PraVoceAdapter(getContext(), songs, onClickSongsMusic()));
+        recycler_pra_voce.setAdapter(new ForYouAdapter(getContext(), songs, onClickSongsMusic()));
 
     }
 
@@ -70,7 +70,7 @@ public class ForYouFragment extends Fragment implements MediaPlayer.OnPreparedLi
         recycler_seus_amigos = (RecyclerView) view.findViewById(R.id.recycler_seus_amigos);
         recycler_seus_amigos.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false));
         recycler_seus_amigos.setItemAnimator(new DefaultItemAnimator());
-        recycler_seus_amigos.setAdapter(new PraVoceAdapter(getContext(), songs, onClickSongsMusic()));
+        recycler_seus_amigos.setAdapter(new ForYouAdapter(getContext(), songs, onClickSongsMusic()));
 
     }
 
@@ -86,17 +86,17 @@ public class ForYouFragment extends Fragment implements MediaPlayer.OnPreparedLi
         recycler_ultimas = (RecyclerView) view.findViewById(R.id.recycler_ultimas);
         recycler_ultimas.setLayoutManager(layoutManager);
         recycler_ultimas.setItemAnimator(new DefaultItemAnimator());
-        recycler_ultimas.setAdapter(new PraVoceAdapter(getContext(), songs, onClickSongsMusic()));
+        recycler_ultimas.setAdapter(new ForYouAdapter(getContext(), songs, onClickSongsMusic()));
 
 
     }
 
-    private PraVoceAdapter.OnClickSongsCallback onClickSongsMusic() {
+    private ForYouAdapter.OnClickSongsCallback onClickSongsMusic() {
 
-        return new PraVoceAdapter.OnClickSongsCallback() {
+        return new ForYouAdapter.OnClickSongsCallback() {
 
             @Override
-            public void onClickPlay(PraVoceAdapter.SongsViewHolder holder, int id) {
+            public void onClickPlay(ForYouAdapter.SongsViewHolder holder, int id) {
 
                 Toast.makeText(getContext(), "Tocar Música", Toast.LENGTH_SHORT).show();
 

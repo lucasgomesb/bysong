@@ -1,15 +1,9 @@
-package bysong.app.activity;
+package bysong.app.visualControls;
 
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceActivity;
-import android.os.Bundle;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBar;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
+
+import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,25 +13,17 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.GraphRequestAsyncTask;
-import com.facebook.GraphResponse;
-import com.facebook.HttpMethod;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.facebook.login.widget.ProfilePictureView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
 import bysong.app.R;
-import bysong.app.fragments.PreferencesFragment;
 
-public class PreferencesActivity extends BaseActivity {
+public class FacebookLoginButton extends com.facebook.login.widget.LoginButton {
 
+    Context mContext;
     AccessToken facebookAccessToken;
     Profile facebookProfile;
     AccessTokenTracker facebookAccessTokenTracker;
@@ -45,40 +31,24 @@ public class PreferencesActivity extends BaseActivity {
     CallbackManager facebookCallbackManager;
     TextView tvFacebookUser;
     ProfilePictureView facebookProfilePictureView;
-    LoginButton btFacebookLogin;
-    Button mbtLogin;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preferences);
-        setUpToolbar();
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
-        if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction().replace(R.id.preferences_root, new PreferencesFragment()).commit();
-        }
-
-        btFacebookLogin = (LoginButton) findViewById(R.id.btFacebookLogin);
-        tvFacebookUser = (TextView) findViewById(R.id.tvFacebookUser);
-        facebookProfilePictureView = (ProfilePictureView) findViewById(R.id.profilePicture);
-
-        mbtLogin = (Button) findViewById(R.id.btn_login);
-        mbtLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(PreferencesActivity.this, LoginActivity.class));
-            }
-        });
-
-        this.initializeFacebookStatus();
-
+    public FacebookLoginButton(Context context) {
+        super(context);
+        mContext = context;
     }
 
-    private void initializeFacebookStatus() {
-        FacebookSdk.sdkInitialize(this.getApplication());
+    public FacebookLoginButton(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        mContext = context;
+    }
+
+    public FacebookLoginButton(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        mContext = context;
+    }
+
+    public void initializeFacebookStatus() {
+        FacebookSdk.sdkInitialize(mContext);
         facebookCallbackManager = CallbackManager.Factory.create();
 
         facebookProfileTracker = new ProfileTracker() {
@@ -112,12 +82,12 @@ public class PreferencesActivity extends BaseActivity {
         facebookAccessToken = AccessToken.getCurrentAccessToken();
         facebookProfile = Profile.getCurrentProfile();
 
-        btFacebookLogin.setReadPermissions("public_profile");
-        btFacebookLogin.setReadPermissions("email");
-        btFacebookLogin.setReadPermissions("user_friends");
+        this.setReadPermissions("public_profile");
+        this.setReadPermissions("email");
+        this.setReadPermissions("user_friends");
 
         // Callback registration
-        btFacebookLogin.registerCallback(facebookCallbackManager, new FacebookCallback<LoginResult>() {
+        this.registerCallback(facebookCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 // Se o usuário fez login com sucesso no Facebook
@@ -146,57 +116,38 @@ public class PreferencesActivity extends BaseActivity {
 
     }
 
+    private void toast(String msg) {
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+    }
+
     private void setFacebookProfile() {
         if (facebookProfile != null) {
-            facebookProfilePictureView.setProfileId(facebookProfile.getId());
-            tvFacebookUser.setText("Conectado como: " + facebookProfile.getName());
+            if (facebookProfilePictureView != null) {
+                facebookProfilePictureView.setProfileId(facebookProfile.getId());
+            }
+            if (tvFacebookUser != null) {
+                tvFacebookUser.setText("Conectado como: " + facebookProfile.getName());
+            }
         } else {
-            facebookProfilePictureView.setProfileId(null);
-            tvFacebookUser.setText("Deslogado");
+            if (facebookProfilePictureView != null) {
+                facebookProfilePictureView.setProfileId(null);
+            }
+            if (tvFacebookUser != null) {
+                tvFacebookUser.setText("Deslogado");
+            }
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-
-        super.onPause();
-    }
-
-    protected void onStop() {
-        super.onStop();
-        facebookProfileTracker.stopTracking();
-        facebookAccessTokenTracker.stopTracking();
-    }
-
-
-    @Override
     public void onDestroy() {
-        super.onDestroy();
+
         facebookProfileTracker.stopTracking();
         facebookAccessTokenTracker.stopTracking();
     }
 
-    @Override
-    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+
+    protected void onActivityResult(final int requestCode, final int resultCode,
+                                    final Intent data) {
         facebookCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }

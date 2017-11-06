@@ -11,7 +11,7 @@
         <LinearLayout
             style="@style/forYouGroupLayout"
             android:layout_width="match_parent"
-            android:background="#f7f7f7"
+            android:background="#efefef"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -58,7 +58,7 @@
             style="@style/forYouGroupLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#f7f7f7"
+            android:background="#efefef"
             android:orientation="vertical">
 
             <TextView

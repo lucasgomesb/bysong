@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "583116506013",
+    "firebase_url": "https://bysong-1301.firebaseio.com",
+    "project_id": "bysong-1301",
+    "storage_bucket": "bysong-1301.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583116506013:android:812c6b79e39db6c1",
+        "android_client_info": {
+          "package_name": "bysong.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583116506013-j90g193hjnc39c993f0kidbq5798keqi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "bysong.app",
+            "certificate_hash": "4412448A33654E5E993B480C6E31EE581848B85F"
+          }
+        },
+        {
+          "client_id": "583116506013-2lr0hkr8a4l1b6mou26c9uofh4q79epq.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "583116506013-mt78v6d6iudm6j0unp4j7d8caq740ert.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA90Sta-zxyJBsGizuHwsGiLUgF1J_rJuI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

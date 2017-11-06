@@ -1,12 +1,17 @@
 package bysong.app.activity;
 
 import android.Manifest;
+import android.app.AlarmManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.util.Base64;
@@ -16,6 +21,7 @@ import android.view.MenuItem;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Calendar;
 
 import bysong.app.R;
 import bysong.app.adapter.TabsAdapter;
@@ -26,6 +32,8 @@ import bysong.app.utils.PrefUtils;
 
 
 public class MainActivity extends BaseActivity {
+
+
 
     private String[] permissions = new String[]{
             Manifest.permission.READ_EXTERNAL_STORAGE
@@ -40,11 +48,50 @@ public class MainActivity extends BaseActivity {
         PermissionUtils.validate(this, 1, permissions);
         setUpViewPagerTabs();
 
+        this.addNotification();
+
         // Não remover. Serve para capturar o key hasch, em caso de mudança. Deixar comentado
         //this.getKeyHashForFacebook();
 
         // Para testes. Simula um usuário logado
         Application.getInstance().setLoggedUser(new User("001", null, "Lucas", "Gomes Bittencourt", 9, 1000));
+    }
+
+   /* private void teste()
+    {
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.MONTH, 6);
+        calendar.set(Calendar.YEAR, 2013);
+        calendar.set(Calendar.DAY_OF_MONTH, 13);
+
+        calendar.set(Calendar.HOUR_OF_DAY, 20);
+        calendar.set(Calendar.MINUTE, 48);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.AM_PM,Calendar.PM);
+
+        Intent myIntent = new Intent(MainActivity.this, MyReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, myIntent,0);
+
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
+    }*/
+    private void addNotification() {
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.artist_circle_adele)
+                        .setContentTitle("Hora de treinar!")
+                        .setContentText("Vamos aprender a letra de uma canção em inglês?")
+                ;
+
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+        // Add as notification
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0, builder.build());
     }
 
     private void getKeyHashForFacebook() {

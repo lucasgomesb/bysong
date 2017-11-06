@@ -3,9 +3,9 @@
     <!-- Básicas -->
     <color name="colorPrimary">#333333</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#FFC107</color>
+    <color name="colorAccent">#321d69</color>
     <color name="white">#FFFFFF</color>
-    <color name="windowBackground">#FFFFFF</color>
+    <color name="windowBackground">#f7f7f7</color>
 
     <!-- Facebook -->
     <color name="facebookBlue">#3b5998</color>
@@ -15,6 +15,7 @@
     <color name="correctAnswerGreenBackground">#c2ffd2</color>
     <color name="correctAnswerGreenText">#167e41</color>
 
-
+    <!-- Área Pra você -->
+    <color name="forYouGroupText">#585858</color>
 
 </resources>

@@ -57,7 +57,7 @@ public class SearchAdapter extends BaseAdapter {
         Song song = songs.get(position);
         View view = LayoutInflater.from(context).inflate(R.layout.row_list_song, parent, false);
         holder = new UserViewHolder(view);
-        holder.img_artist.setImageResource(song.getArtist().getImageFileArtistID());
+        holder.img_artist.setImageResource(context.getResources().getIdentifier(song.getArtist().getImageFileArtist(), "drawable", "bysong.app"));
         //holder.img_status.setImageResource(song.getSongRankingStatus());
         holder.name_song_artist.setText(song.getArtist().getArtistName() + " - " + song.getTitle());
         holder.visualizacoes.setText(String.valueOf(song.getAllViewsCount()) + " visualizações");
@@ -76,10 +76,7 @@ public class SearchAdapter extends BaseAdapter {
             img_artist = (ImageView) view.findViewById(R.id.img_artist);
             name_song_artist = (TextView) view.findViewById(R.id.name_song_artist);
             img_status = (ImageView) view.findViewById(R.id.img_status);
-            //preview = (ImageView) view.findViewById(R.id.preview);
             visualizacoes = (TextView) view.findViewById(R.id.song_views_count);
-            //song_item_audio = (ImageView) view.findViewById(R.id.song_item_audio);
-            //song_item_audio_pause = (ImageView) view.findViewById(R.id.song_item_audio_pause);
 
         }
 

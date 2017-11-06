@@ -41,19 +41,19 @@ public class SongLibrary {
     public List<Song> getSongList() {
 
         List<Song> loSongList = new ArrayList<Song>();
-        loSongList.add(new Song("dangerous.mp3", "dangerous.mp3", "Hello", 128, null, new Artist("Adele", R.drawable.artist_circle_adele), SongRankStatus.getStatus(SongRankStatus.DOWN)));
-        loSongList.add(new Song("dangerous.mp3", "dangerous.mp3", "NO", 5677, null, new Artist("Meghan Trainor", R.drawable.artist_circle_meghan_trainor), SongRankStatus.getStatus(SongRankStatus.DOWN)));
-        loSongList.add(new Song("dangerous.mp3", "dangerous.mp3", "Sugar", 756, null, new Artist("Maroon Five", R.drawable.artist_circle_maroon_five), SongRankStatus.getStatus(SongRankStatus.NO_CHANGES)));
-        loSongList.add(new Song("dangerous.mp3", "dangerous.mp3", "Imagine", 26546, null, new Artist("John Lennon", R.drawable.artist_circle_john_lennon), SongRankStatus.getStatus(SongRankStatus.UP)));
-        loSongList.add(new Song("dangerous.mp3", "dangerous.mp3", "Come as you are", 982, null, new Artist("Nirvana", R.drawable.artist_circle_nirvana), SongRankStatus.getStatus(SongRankStatus.NO_CHANGES)));
-        loSongList.add(new Song("dangerous.mp3", "dangerous.mp3", "Patience",1892, null, new Artist("Guns N' Roses", R.drawable.artist_circle_guns_n_roses), SongRankStatus.getStatus(SongRankStatus.UP)));
-        loSongList.add(new Song("dangerous.mp3", "dangerous.mp3", "Cheap Thrills",7817, null, new Artist("Sia", R.drawable.artist_circle_sia), SongRankStatus.getStatus(SongRankStatus.DOWN)));
-        loSongList.add(new Song("dangerous.mp3", "dangerous.mp3", "NO", 5677, null, new Artist("Meghan Trainor", R.drawable.artist_circle_meghan_trainor), SongRankStatus.getStatus(SongRankStatus.DOWN)));
-        loSongList.add(new Song("dangerous.mp3", "dangerous.mp3", "Sugar", 756, null, new Artist("Maroon Five", R.drawable.artist_circle_maroon_five), SongRankStatus.getStatus(SongRankStatus.NO_CHANGES)));
-        loSongList.add(new Song("dangerous.mp3", "dangerous.mp3", "Imagine", 26546, null, new Artist("John Lennon", R.drawable.artist_circle_john_lennon), SongRankStatus.getStatus(SongRankStatus.UP)));
-        loSongList.add(new Song("dangerous.mp3", "dangerous.mp3", "Come as you are", 982, null, new Artist("Nirvana", R.drawable.artist_circle_nirvana), SongRankStatus.getStatus(SongRankStatus.NO_CHANGES)));
-        loSongList.add(new Song("dangerous.mp3", "dangerous.mp3", "Patience", 1892, null, new Artist("Guns N' Roses", R.drawable.artist_circle_guns_n_roses), SongRankStatus.getStatus(SongRankStatus.UP)));
-        loSongList.add(new Song("dangerous.mp3", "dangerous.mp3", "Cheap Thrills", 7817, null, new Artist("Sia", R.drawable.artist_circle_sia), SongRankStatus.getStatus(SongRankStatus.DOWN)));
+        loSongList.add(new Song("0001", "http://bysong.com.br/BySongStreamingFiles/dream_girl.mp3", "Hello", 128, null, new Artist("Adele", "artist_circle_adele"), SongRankStatus.getStatus(SongRankStatus.DOWN)));
+        loSongList.add(new Song("0001", "http://bysong.com.br/BySongStreamingFiles/dream_girl.mp3", "NO", 5677, null, new Artist("Meghan Trainor", "artist_circle_meghan_trainor"), SongRankStatus.getStatus(SongRankStatus.DOWN)));
+        loSongList.add(new Song("0001", "http://bysong.com.br/BySongStreamingFiles/dream_girl.mp3", "Sugar", 756, null, new Artist("Maroon Five", "artist_circle_maroon_five"), SongRankStatus.getStatus(SongRankStatus.NO_CHANGES)));
+        loSongList.add(new Song("0001", "http://bysong.com.br/BySongStreamingFiles/dream_girl.mp3", "Imagine", 26546, null, new Artist("John Lennon", "artist_circle_john_lennon"), SongRankStatus.getStatus(SongRankStatus.UP)));
+        loSongList.add(new Song("0001", "http://bysong.com.br/BySongStreamingFiles/dream_girl.mp3", "Come as you are", 982, null, new Artist("Nirvana", "artist_circle_nirvana"), SongRankStatus.getStatus(SongRankStatus.NO_CHANGES)));
+        loSongList.add(new Song("0001", "http://bysong.com.br/BySongStreamingFiles/dream_girl.mp3", "Patience",1892, null, new Artist("Guns N' Roses", "artist_circle_guns_n_roses"), SongRankStatus.getStatus(SongRankStatus.UP)));
+        loSongList.add(new Song("0001", "http://bysong.com.br/BySongStreamingFiles/dream_girl.mp3", "Cheap Thrills",7817, null, new Artist("Sia", "artist_circle_sia"), SongRankStatus.getStatus(SongRankStatus.DOWN)));
+        loSongList.add(new Song("0001", "http://bysong.com.br/BySongStreamingFiles/dream_girl.mp3", "NO", 5677, null, new Artist("Meghan Trainor", "artist_circle_meghan_trainor"), SongRankStatus.getStatus(SongRankStatus.DOWN)));
+        loSongList.add(new Song("0001", "http://bysong.com.br/BySongStreamingFiles/dream_girl.mp3", "Sugar", 756, null, new Artist("Maroon Five", "artist_circle_maroon_five"), SongRankStatus.getStatus(SongRankStatus.NO_CHANGES)));
+        loSongList.add(new Song("0001", "http://bysong.com.br/BySongStreamingFiles/dream_girl.mp3", "Imagine", 26546, null, new Artist("John Lennon", "artist_circle_john_lennon"), SongRankStatus.getStatus(SongRankStatus.UP)));
+        loSongList.add(new Song("0001", "http://bysong.com.br/BySongStreamingFiles/dream_girl.mp3", "Come as you are", 982, null, new Artist("Nirvana", "artist_circle_nirvana"), SongRankStatus.getStatus(SongRankStatus.NO_CHANGES)));
+        loSongList.add(new Song("0001", "http://bysong.com.br/BySongStreamingFiles/dream_girl.mp3", "Patience", 1892, null, new Artist("Guns N' Roses", "artist_circle_guns_n_roses"), SongRankStatus.getStatus(SongRankStatus.UP)));
+        loSongList.add(new Song("0001", "http://bysong.com.br/BySongStreamingFiles/dream_girl.mp3", "Cheap Thrills", 7817, null, new Artist("Sia", "artist_circle_sia"), SongRankStatus.getStatus(SongRankStatus.DOWN)));
 
         for(Song loSong : loSongList) {
 
