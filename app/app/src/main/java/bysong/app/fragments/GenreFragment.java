@@ -12,13 +12,13 @@ import bysong.app.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GeneroFragment extends Fragment {
+public class GenreFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_genero, container, false);
+        return inflater.inflate(R.layout.fragment_genre, container, false);
     }
 
 }

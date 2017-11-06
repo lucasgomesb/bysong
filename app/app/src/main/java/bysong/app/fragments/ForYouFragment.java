@@ -1,29 +1,22 @@
 package bysong.app.fragments;
 
-import android.content.Intent;
-import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.List;
 
 import bysong.app.R;
-import bysong.app.activity.MusicaActivity;
 import bysong.app.adapter.PraVoceAdapter;
-import bysong.app.adapter.SongsAdapter;
 import bysong.app.controller.SongLibrary;
 import bysong.app.domain.PlayerMp3;
 import bysong.app.domain.Song;
@@ -31,7 +24,7 @@ import bysong.app.domain.Song;
 /**
  * Created by Tiago on 10/08/2016.
  */
-public class PraVoceFragment extends Fragment implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
+public class ForYouFragment extends Fragment implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
     private static final String TAG = "songplayer";
     private RecyclerView recycler_pra_voce, recycler_seus_amigos, recycler_ultimas;
@@ -52,10 +45,9 @@ public class PraVoceFragment extends Fragment implements MediaPlayer.OnPreparedL
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_pra_voce, container, false);
-        //songs = new SongLibrary().getSongList();
-        songs = Song.getSongsArtist();
-        // RecyclerView
+        View view = inflater.inflate(R.layout.fragment_for_you, container, false);
+        songs = new SongLibrary().getSongList();
+
         getRecyclerPraVoce(view);
         getRecyclerSeusAmigos(view);
         getRecyclerUltimas(view);
@@ -84,10 +76,18 @@ public class PraVoceFragment extends Fragment implements MediaPlayer.OnPreparedL
 
     private void getRecyclerUltimas(View view) {
 
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+
         recycler_ultimas = (RecyclerView) view.findViewById(R.id.recycler_ultimas);
-        recycler_ultimas.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false));
+        recycler_ultimas.setLayoutManager(layoutManager);
         recycler_ultimas.setItemAnimator(new DefaultItemAnimator());
         recycler_ultimas.setAdapter(new PraVoceAdapter(getContext(), songs, onClickSongsMusic()));
+
 
     }
 

@@ -9,7 +9,7 @@ import bysong.app.fragments.MusicaFragment;
 /**
  * Created by Tiago on 09/09/2016.
  */
-public class MusicaActivity extends BaseActivity {
+public class MusicActivity extends BaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

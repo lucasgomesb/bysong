@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 import bysong.app.R;
-import bysong.app.activity.MusicaActivity;
+import bysong.app.activity.MusicActivity;
 import bysong.app.adapter.SongsAdapter;
 import bysong.app.controller.SongLibrary;
 import bysong.app.domain.PlayerMp3;
@@ -28,7 +28,7 @@ import bysong.app.visualControls.SimpleDividerItemDecoration;
 /**
  * Created by Tiago on 10/08/2016.
  */
-public class TopSemanalFragment extends Fragment implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
+public class TopWeekFragment extends Fragment implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
     private final String TAG = "songplayer";
     private RecyclerView recyclerView;
@@ -51,7 +51,7 @@ public class TopSemanalFragment extends Fragment implements MediaPlayer.OnPrepar
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_top_semanal, container, false);
+        View view = inflater.inflate(R.layout.fragment_top_week, container, false);
         songs = new SongLibrary().getSongList();
 
         //songs = Song.getSongs();
@@ -125,7 +125,7 @@ public class TopSemanalFragment extends Fragment implements MediaPlayer.OnPrepar
             @Override
             public void onClickTrecho(SongsAdapter.SongsViewHolder holder, int id) {
 
-                startActivity(new Intent(getContext(), MusicaActivity.class));
+                startActivity(new Intent(getContext(), MusicActivity.class));
 
             }
 

@@ -22,7 +22,7 @@ import bysong.app.domain.Song;
 /**
  * Created by Tiago on 10/08/2016.
  */
-public class LancamentosFragment extends Fragment {
+public class NewsFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private List<Song> songs;

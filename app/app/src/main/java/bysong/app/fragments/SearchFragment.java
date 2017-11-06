@@ -16,19 +16,17 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 import bysong.app.R;
 import bysong.app.adapter.PesquisaAdapter;
 import bysong.app.domain.Song;
 import bysong.app.service.BySongServiceManager;
-import bysong.app.utils.AndroidUtils;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PesquisaFragment extends Fragment implements CallBackInterface {
+public class SearchFragment extends Fragment implements CallBackInterface {
 
     private ListView listaSongs;
     private List<Song> songs;
@@ -38,7 +36,7 @@ public class PesquisaFragment extends Fragment implements CallBackInterface {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.fragment_pesquisa, container, false);
+        view = inflater.inflate(R.layout.fragment_search, container, false);
         setHasOptionsMenu(true);
         BySongServiceManager bySongServiceManager = new BySongServiceManager();
         bySongServiceManager.getSongList(this);
@@ -52,7 +50,7 @@ public class PesquisaFragment extends Fragment implements CallBackInterface {
         inflater.inflate(R.menu.menu_search, menu);
         MenuItem item = menu.findItem(R.id.menu_search);
         SearchView sv = new SearchView(getActivity());
-        sv.setOnQueryTextListener(new PesquisaFragment.MenuListener(getActivity()));
+        sv.setOnQueryTextListener(new SearchFragment.MenuListener(getActivity()));
         //sv.setBackgroundColor(Color.WHITE);
         item.setActionView(sv);
         super.onCreateOptionsMenu(menu, inflater);

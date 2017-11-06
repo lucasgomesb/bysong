@@ -20,7 +20,7 @@ import bysong.app.domain.PlayerMp3;
 /**
  * Created by Tiago on 09/09/2016.
  */
-public class MusicaFragment extends Fragment implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
+public class MusicFragment extends Fragment implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
 
     private static final String TAG = "songplayer";
 
@@ -47,8 +47,8 @@ public class MusicaFragment extends Fragment implements MediaPlayer.OnPreparedLi
         try {
 
             isPlaying = true;
-            playerMp3 = PlayerMp3.getInstance((MediaPlayer.OnPreparedListener) MusicaFragment.this,
-                    (MediaPlayer.OnCompletionListener)MusicaFragment.this);
+            playerMp3 = PlayerMp3.getInstance((MediaPlayer.OnPreparedListener) MusicFragment.this,
+                    (MediaPlayer.OnCompletionListener)MusicFragment.this);
             AssetFileDescriptor asset = getActivity().getAssets().openFd("pra_nao_morrer_de_paixao_refrao.mp3");
             playerMp3.start(asset.getFileDescriptor(), asset.getStartOffset(), asset.getLength());
 

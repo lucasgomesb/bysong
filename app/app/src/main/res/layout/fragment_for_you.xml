@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/forYouGroupLayout"
+            android:layout_width="match_parent"
+            android:background="#f7f7f7"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label_pra_voce"
+                style="@style/forYouGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/forYouGroupTextForYou"
+                android:textAllCaps="true" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_pra_voce"
+                style="@style/forYouHorizontalSongList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/forYouGroupLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label_seus_amigos"
+                style="@style/forYouGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/forYouGroupTextYourFriends" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_seus_amigos"
+                style="@style/forYouHorizontalSongList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/forYouGroupLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f7f7f7"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label_ultimas"
+                style="@style/forYouGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/forYouGroupTextYourLastSongs" />
+
+            <!--TODO: A altura deve ser a altura da tela -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_ultimas"
+                style="@style/forYouHorizontalSongList"
+                android:layout_width="match_parent"
+                android:layout_height="500dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
